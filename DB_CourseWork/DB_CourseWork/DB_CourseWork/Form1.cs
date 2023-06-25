@@ -1,8 +1,11 @@
 using DB_CourseWork.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.CodeDom;
 using System.Data;
 using System.Reflection;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DB_CourseWork
 {
@@ -13,6 +16,7 @@ namespace DB_CourseWork
         private List<object> entities = new List<object>();
         private Type? type;
         private int prev_list_ind = 0;
+        
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +24,7 @@ namespace DB_CourseWork
         }
         private void InitForm()
         {
+            DB_Controller.mainForm = this;
             DB_Grid.AutoGenerateColumns= true;
             DB_Grid.ReadOnly= true;
 
@@ -55,19 +60,19 @@ namespace DB_CourseWork
                     {
                         dbContext.PcСomponents.ToList().ForEach(u => entities.Add(u));
                     };
-                    break;              
+                    break;
                 case "Офісне обладнання":
                     using (AccountingContext dbContext = new AccountingContext())
                     {
                         dbContext.OfficeEquipments.ToList().ForEach(u => entities.Add(u));
                     };
-                    break;                
+                    break;
                 case "Мережеве устаткування":
                     using (AccountingContext dbContext = new AccountingContext())
                     {
                         dbContext.NetworkDevices.ToList().ForEach(u => entities.Add(u));
                     };
-                    break;                
+                    break;
                 case "Персональні комп'ютери":
                     using (AccountingContext dbContext = new AccountingContext())
                     {
@@ -78,8 +83,7 @@ namespace DB_CourseWork
 
             DB_Grid.DataSource = entities;
         }
-
-
+        
         private void table_List_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!saved)
@@ -89,8 +93,7 @@ namespace DB_CourseWork
                 if (table_List.SelectedIndex == prev_list_ind) return;
                 
                 table_List.SelectedIndex = prev_list_ind;
-                DB_Grid.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?","Збереження",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?","Збереження",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 switch (result)
                 {
                     case DialogResult.Yes:
@@ -102,7 +105,6 @@ namespace DB_CourseWork
                         table_List.SelectedIndex = chooseInd;
                         break;
                 }
-                
             }
             
             GetSelectedTable();
@@ -117,29 +119,11 @@ namespace DB_CourseWork
             DB_Grid.ReadOnly= !permissionChange;
             DB_Grid.Columns[0].ReadOnly = true;
         }
-        private List<List<object>> GetRowValues() 
-        {
-            List<object> row_values = new List<object>();
-            List<List<object>> table_values = new List<List<object>>();
-
-            for (int i = 0; i < DB_Grid.RowCount; i++)
-            {
-                for (int j = 0; j < DB_Grid.ColumnCount; j++)
-                {
-                    row_values.Add(DB_Grid.Rows[i].Cells[j].Value);
-                }
-                
-                table_values.Add(new List<object>());
-                table_values.Last().AddRange(row_values);
-                row_values.Clear();
-            }
-            return table_values;
-        }
-
+        
         
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-                List<List<object>> table_values = GetRowValues();
+                List<List<object>> table_values = DB_Controller.GetRowValues();
                 using (AccountingContext dbContext = new AccountingContext())
                 {
                     try
@@ -236,25 +220,16 @@ namespace DB_CourseWork
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("ALERT");
+                        MessageBox.Show("Не всі дані було введено!","Помилка",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        saved = true;
                     }
                 };
         }
 
-        private int GetNextId()
-        {
-            List<List<object>> values = GetRowValues();
-            int maxInd = int.MinValue;
-            foreach (var item in values)
-            {
-                maxInd = (int)((int)item[0] > maxInd ? item[0] : maxInd);
-            }
-
-            return maxInd + 1;
-        }
+        
         private void Add_Row_Btn_Click(object sender, EventArgs e)
         {
-            int id = GetNextId();
+            int id = DB_Controller.GetNextId();
             var new_inst = Activator.CreateInstance(type);
             type.GetProperty("Id").SetValue(new_inst,id);
             
@@ -287,10 +262,7 @@ namespace DB_CourseWork
 
         private void DB_Grid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                saved = false;
-            }
+            saved = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -309,6 +281,40 @@ namespace DB_CourseWork
                 }
 
             }
+        }
+
+        
+        private void table_List_MouseWheel(object sender, MouseEventArgs e)
+        {
+            //відключення прокрутки ComboBox колесиком миші
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+
+        private void DB_Grid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            List<object> listInd = DB_Controller.GetIndexNonStringColumns();
+            if (listInd.Contains(DB_Grid.CurrentCell.ColumnIndex)  && e.Control is System.Windows.Forms.TextBox textBox)
+            {
+                textBox.KeyPress += (s, args) =>
+                {
+                    if (!char.IsControl(args.KeyChar) && !char.IsDigit(args.KeyChar))
+                    {
+                        args.Handled = true; // Забороняємо введення символів, які не є цифрами
+                    }
+                };
+            }
+        }
+        private  void Search_Btn_Click(object sender, EventArgs e)
+        {
+           SearchForm searchForm = new SearchForm();
+
+            searchForm.StartPosition= FormStartPosition.CenterParent;
+            using (var dbContext = new AccountingContext())
+            {
+                searchForm.nameTable = dbContext.Model.FindEntityType(DB_Controller.Table[table_List.SelectedItem as string]).GetTableName();
+                searchForm.table = dbContext.Model.FindEntityType(DB_Controller.Table[table_List.SelectedItem as string]); 
+            };
+            searchForm.ShowDialog();
         }
     }
 }

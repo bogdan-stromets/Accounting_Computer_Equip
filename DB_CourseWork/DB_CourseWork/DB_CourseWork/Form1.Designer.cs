@@ -51,20 +51,22 @@
             this.DB_Grid.Size = new System.Drawing.Size(875, 391);
             this.DB_Grid.TabIndex = 0;
             this.DB_Grid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DB_Grid_CellValueChanged);
+            this.DB_Grid.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DB_Grid_EditingControlShowing);
             // 
             // table_List
             // 
             this.table_List.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.table_List.FormattingEnabled = true;
-            this.table_List.Location = new System.Drawing.Point(497, 458);
+            this.table_List.Location = new System.Drawing.Point(48, 448);
             this.table_List.Name = "table_List";
             this.table_List.Size = new System.Drawing.Size(174, 23);
             this.table_List.TabIndex = 1;
             this.table_List.SelectedIndexChanged += new System.EventHandler(this.table_List_SelectedIndexChanged);
+            this.table_List.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.table_List_MouseWheel);
             // 
             // Add_Row_Btn
             // 
-            this.Add_Row_Btn.Location = new System.Drawing.Point(55, 429);
+            this.Add_Row_Btn.Location = new System.Drawing.Point(653, 431);
             this.Add_Row_Btn.Name = "Add_Row_Btn";
             this.Add_Row_Btn.Size = new System.Drawing.Size(103, 23);
             this.Add_Row_Btn.TabIndex = 2;
@@ -74,7 +76,7 @@
             // 
             // Remove_Row_Btn
             // 
-            this.Remove_Row_Btn.Location = new System.Drawing.Point(55, 458);
+            this.Remove_Row_Btn.Location = new System.Drawing.Point(653, 460);
             this.Remove_Row_Btn.Name = "Remove_Row_Btn";
             this.Remove_Row_Btn.Size = new System.Drawing.Size(103, 23);
             this.Remove_Row_Btn.TabIndex = 3;
@@ -84,7 +86,7 @@
             // 
             // Change_btn
             // 
-            this.Change_btn.Location = new System.Drawing.Point(178, 458);
+            this.Change_btn.Location = new System.Drawing.Point(793, 460);
             this.Change_btn.Name = "Change_btn";
             this.Change_btn.Size = new System.Drawing.Size(94, 23);
             this.Change_btn.TabIndex = 4;
@@ -94,18 +96,19 @@
             // 
             // Search_Btn
             // 
-            this.Search_Btn.Location = new System.Drawing.Point(178, 429);
+            this.Search_Btn.Location = new System.Drawing.Point(533, 448);
             this.Search_Btn.Name = "Search_Btn";
-            this.Search_Btn.Size = new System.Drawing.Size(94, 23);
+            this.Search_Btn.Size = new System.Drawing.Size(87, 23);
             this.Search_Btn.TabIndex = 5;
-            this.Search_Btn.Text = "Search";
+            this.Search_Btn.Text = "<<< Search";
             this.Search_Btn.UseVisualStyleBackColor = true;
+            this.Search_Btn.Click += new System.EventHandler(this.Search_Btn_Click);
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(278, 443);
+            this.save_btn.Location = new System.Drawing.Point(793, 431);
             this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(89, 23);
+            this.save_btn.Size = new System.Drawing.Size(94, 23);
             this.save_btn.TabIndex = 6;
             this.save_btn.Text = "Save";
             this.save_btn.UseVisualStyleBackColor = true;
@@ -114,7 +117,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(566, 433);
+            this.label1.Location = new System.Drawing.Point(114, 429);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 7;
@@ -148,13 +151,13 @@
 
         #endregion
 
-        private DataGridView DB_Grid;
-        private ComboBox table_List;
-        private Button Add_Row_Btn;
-        private Button Remove_Row_Btn;
-        private Button Change_btn;
-        private Button Search_Btn;
-        private Button save_btn;
-        private Label label1;
+        internal DataGridView DB_Grid;
+        internal ComboBox table_List;
+        internal Button Add_Row_Btn;
+        internal Button Remove_Row_Btn;
+        internal Button Change_btn;
+        internal Button Search_Btn;
+        internal Button save_btn;
+        internal Label label1;
     }
 }

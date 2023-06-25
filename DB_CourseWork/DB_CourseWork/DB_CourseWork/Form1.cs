@@ -1,4 +1,5 @@
 using DB_CourseWork.Models;
+using DB_CourseWork.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.CodeDom;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Reflection;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace DB_CourseWork
 {
@@ -30,6 +32,13 @@ namespace DB_CourseWork
 
             table_List.Items.AddRange(DB_Controller.Table.Keys.ToArray());
             table_List.SelectedIndex= 0;
+      
+            System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
+            tip.SetToolTip(Change_btn, "Редагування\r\n(Вимк/Увім)");
+            tip.SetToolTip(Add_Row_Btn, "Додати рядок");
+            tip.SetToolTip(Remove_Row_Btn, "Видалити рядок");
+            tip.SetToolTip(save_btn, "Зберегти зміни");
+            tip.SetToolTip(Search_Btn, "Пошук");
         }
 
         private void GetSelectedTable()
@@ -82,6 +91,11 @@ namespace DB_CourseWork
             }
 
             DB_Grid.DataSource = entities;
+
+            foreach (DataGridViewColumn column in DB_Grid.Columns)
+            {
+                column.DefaultCellStyle.Font = new Font("Consolas", 11, FontStyle.Regular);
+            }
         }
         
         private void table_List_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,12 +129,11 @@ namespace DB_CourseWork
         private void Change_btn_Click(object sender, EventArgs e)
         {
             permissionChange = !permissionChange;
-            Change_btn.Text = permissionChange ? "Change: true" : "Change: false";
+            Text = permissionChange ? "Редагування: Увімкнено" : "Редагування: Вимкнено";
+            Change_btn.BackgroundImage = permissionChange ? Resources.on : Resources.off;
             DB_Grid.ReadOnly= !permissionChange;
             DB_Grid.Columns[0].ReadOnly = true;
-        }
-        
-        
+        }        
         private void SaveBtn_Click(object sender, EventArgs e)
         {
                 List<List<object>> table_values = DB_Controller.GetRowValues();
@@ -283,7 +296,6 @@ namespace DB_CourseWork
             }
         }
 
-        
         private void table_List_MouseWheel(object sender, MouseEventArgs e)
         {
             //відключення прокрутки ComboBox колесиком миші

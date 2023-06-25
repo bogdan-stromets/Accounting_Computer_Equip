@@ -29,6 +29,8 @@ namespace DB_CourseWork
             comboBox1.SelectedIndex= 0;
             comboBox1.Items.AddRange(DB_Controller.Table.Keys.ToArray());
             DB_Controller.searchForm = this;
+            System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
+            tip.SetToolTip(search_Btn, "Пошук");
         }
         
         private void search_Btn_Click(object sender, EventArgs e)

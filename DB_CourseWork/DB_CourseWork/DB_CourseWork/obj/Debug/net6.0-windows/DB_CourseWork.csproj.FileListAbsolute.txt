@@ -38,3 +38,4 @@ G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseW
 G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\System.Text.Json.dll
 G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.SearchForm.resources
+G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.Properties.Resources.resources

@@ -56,72 +56,96 @@
             // table_List
             // 
             this.table_List.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.table_List.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.table_List.FormattingEnabled = true;
-            this.table_List.Location = new System.Drawing.Point(48, 448);
+            this.table_List.Location = new System.Drawing.Point(359, 455);
             this.table_List.Name = "table_List";
-            this.table_List.Size = new System.Drawing.Size(174, 23);
+            this.table_List.Size = new System.Drawing.Size(265, 31);
             this.table_List.TabIndex = 1;
             this.table_List.SelectedIndexChanged += new System.EventHandler(this.table_List_SelectedIndexChanged);
             this.table_List.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.table_List_MouseWheel);
             // 
             // Add_Row_Btn
             // 
-            this.Add_Row_Btn.Location = new System.Drawing.Point(653, 431);
+            this.Add_Row_Btn.BackColor = System.Drawing.Color.Transparent;
+            this.Add_Row_Btn.BackgroundImage = global::DB_CourseWork.Properties.Resources.pngwing_com;
+            this.Add_Row_Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Add_Row_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Add_Row_Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Add_Row_Btn.Location = new System.Drawing.Point(665, 427);
             this.Add_Row_Btn.Name = "Add_Row_Btn";
-            this.Add_Row_Btn.Size = new System.Drawing.Size(103, 23);
+            this.Add_Row_Btn.Size = new System.Drawing.Size(73, 69);
             this.Add_Row_Btn.TabIndex = 2;
-            this.Add_Row_Btn.Text = "+";
-            this.Add_Row_Btn.UseVisualStyleBackColor = true;
+            this.Add_Row_Btn.UseVisualStyleBackColor = false;
             this.Add_Row_Btn.Click += new System.EventHandler(this.Add_Row_Btn_Click);
             // 
             // Remove_Row_Btn
             // 
-            this.Remove_Row_Btn.Location = new System.Drawing.Point(653, 460);
+            this.Remove_Row_Btn.BackColor = System.Drawing.Color.Transparent;
+            this.Remove_Row_Btn.BackgroundImage = global::DB_CourseWork.Properties.Resources.add;
+            this.Remove_Row_Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Remove_Row_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Remove_Row_Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Remove_Row_Btn.Location = new System.Drawing.Point(764, 427);
             this.Remove_Row_Btn.Name = "Remove_Row_Btn";
-            this.Remove_Row_Btn.Size = new System.Drawing.Size(103, 23);
+            this.Remove_Row_Btn.Size = new System.Drawing.Size(73, 69);
             this.Remove_Row_Btn.TabIndex = 3;
-            this.Remove_Row_Btn.Text = "-";
-            this.Remove_Row_Btn.UseVisualStyleBackColor = true;
+            this.Remove_Row_Btn.UseVisualStyleBackColor = false;
             this.Remove_Row_Btn.Click += new System.EventHandler(this.Remove_Row_Btn_Click);
             // 
             // Change_btn
             // 
-            this.Change_btn.Location = new System.Drawing.Point(793, 460);
+            this.Change_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Change_btn.BackgroundImage = global::DB_CourseWork.Properties.Resources.off;
+            this.Change_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Change_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Change_btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Change_btn.Location = new System.Drawing.Point(23, 436);
             this.Change_btn.Name = "Change_btn";
-            this.Change_btn.Size = new System.Drawing.Size(94, 23);
+            this.Change_btn.Size = new System.Drawing.Size(107, 50);
             this.Change_btn.TabIndex = 4;
-            this.Change_btn.Text = "Change: false";
-            this.Change_btn.UseVisualStyleBackColor = true;
+            this.Change_btn.UseVisualStyleBackColor = false;
             this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
             // 
             // Search_Btn
             // 
-            this.Search_Btn.Location = new System.Drawing.Point(533, 448);
+            this.Search_Btn.BackColor = System.Drawing.Color.Transparent;
+            this.Search_Btn.BackgroundImage = global::DB_CourseWork.Properties.Resources.search;
+            this.Search_Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Search_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Search_Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Search_Btn.Location = new System.Drawing.Point(242, 429);
             this.Search_Btn.Name = "Search_Btn";
-            this.Search_Btn.Size = new System.Drawing.Size(87, 23);
+            this.Search_Btn.Size = new System.Drawing.Size(73, 69);
             this.Search_Btn.TabIndex = 5;
-            this.Search_Btn.Text = "<<< Search";
-            this.Search_Btn.UseVisualStyleBackColor = true;
+            this.Search_Btn.UseVisualStyleBackColor = false;
             this.Search_Btn.Click += new System.EventHandler(this.Search_Btn_Click);
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(793, 431);
+            this.save_btn.BackColor = System.Drawing.Color.Transparent;
+            this.save_btn.BackgroundImage = global::DB_CourseWork.Properties.Resources.save;
+            this.save_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.save_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.save_btn.ForeColor = System.Drawing.Color.Transparent;
+            this.save_btn.Location = new System.Drawing.Point(150, 429);
             this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(94, 23);
+            this.save_btn.Size = new System.Drawing.Size(73, 69);
             this.save_btn.TabIndex = 6;
-            this.save_btn.Text = "Save";
-            this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.UseVisualStyleBackColor = false;
             this.save_btn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(114, 429);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(422, 427);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(138, 23);
             this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.label1.Text = "Обрана таблиця";
             // 
             // Form1
             // 
@@ -137,10 +161,11 @@
             this.Controls.Add(this.Add_Row_Btn);
             this.Controls.Add(this.table_List);
             this.Controls.Add(this.DB_Grid);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Редагування: Вимкнено";
             this.TransparencyKey = System.Drawing.Color.Maroon;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.DB_Grid)).EndInit();

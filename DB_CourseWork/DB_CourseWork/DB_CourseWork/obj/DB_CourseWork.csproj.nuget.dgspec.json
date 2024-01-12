@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Study\\3 курс\\2 семестр\\CourseWork\\Project\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj": {}
+    "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\CourseWork_DB\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj": {}
   },
   "projects": {
-    "G:\\Study\\3 курс\\2 семестр\\CourseWork\\Project\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj": {
+    "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\CourseWork_DB\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Study\\3 курс\\2 семестр\\CourseWork\\Project\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj",
+        "projectUniqueName": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\CourseWork_DB\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj",
         "projectName": "DB_CourseWork",
-        "projectPath": "G:\\Study\\3 курс\\2 семестр\\CourseWork\\Project\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj",
+        "projectPath": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\CourseWork_DB\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj",
         "packagesPath": "C:\\Users\\String.Empty\\.nuget\\packages\\",
-        "outputPath": "G:\\Study\\3 курс\\2 семестр\\CourseWork\\Project\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\obj\\",
+        "outputPath": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\CourseWork_DB\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\String.Empty\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,7 +70,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

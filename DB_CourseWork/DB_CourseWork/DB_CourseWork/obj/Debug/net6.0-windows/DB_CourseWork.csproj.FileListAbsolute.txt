@@ -39,3 +39,45 @@ G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseW
 G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.SearchForm.resources
 G:\Study\3 курс\2 семестр\CourseWork\Project\DB_CourseWork\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.Properties.Resources.resources
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\DB_CourseWork.exe
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\DB_CourseWork.deps.json
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\DB_CourseWork.runtimeconfig.json
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\DB_CourseWork.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\DB_CourseWork.pdb
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Humanizer.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Npgsql.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\System.Text.Json.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.csproj.AssemblyReference.cache
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.Form1.resources
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.Properties.Resources.resources
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.SearchForm.resources
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.csproj.GenerateResource.cache
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.GeneratedMSBuildEditorConfig.editorconfig
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.AssemblyInfoInputs.cache
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.AssemblyInfo.cs
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.csproj.CoreCompileInputs.cache
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.csproj.CopyComplete
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\refint\DB_CourseWork.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.pdb
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.genruntimeconfig.cache
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\ref\DB_CourseWork.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\CourseWork_DB\DB_CourseWork\DB_CourseWork\DB_CourseWork\obj\Debug\net6.0-windows\DB_CourseWork.Accounting.resources

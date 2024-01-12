@@ -18,7 +18,7 @@ namespace DB_CourseWork
         private List<object> entities = new List<object>();
         private Type? type;
         private int prev_list_ind = 0;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -26,13 +26,13 @@ namespace DB_CourseWork
         }
         private void InitForm()
         {
-            DB_Controller.mainForm = this;
-            DB_Grid.AutoGenerateColumns= true;
-            DB_Grid.ReadOnly= true;
+           // DB_Controller.mainForm = this;
+            DB_Grid.AutoGenerateColumns = true;
+            DB_Grid.ReadOnly = true;
 
             table_List.Items.AddRange(DB_Controller.Table.Keys.ToArray());
-            table_List.SelectedIndex= 0;
-      
+            table_List.SelectedIndex = 0;
+
             System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
             tip.SetToolTip(Change_btn, "Редагування\r\n(Вимк/Увім)");
             tip.SetToolTip(Add_Row_Btn, "Додати рядок");
@@ -97,7 +97,7 @@ namespace DB_CourseWork
                 column.DefaultCellStyle.Font = new Font("Consolas", 11, FontStyle.Regular);
             }
         }
-        
+
         private void table_List_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!saved)
@@ -105,13 +105,13 @@ namespace DB_CourseWork
                 int chooseInd = table_List.SelectedIndex;
 
                 if (table_List.SelectedIndex == prev_list_ind) return;
-                
+
                 table_List.SelectedIndex = prev_list_ind;
-                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?","Збереження",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?", "Збереження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 switch (result)
                 {
                     case DialogResult.Yes:
-                        SaveBtn_Click(sender,e);
+                        SaveBtn_Click(sender, e);
                         table_List.SelectedIndex = chooseInd;
                         break;
                     default:
@@ -120,7 +120,7 @@ namespace DB_CourseWork
                         break;
                 }
             }
-            
+
             GetSelectedTable();
             type = DB_Controller.Table[table_List.SelectedItem as String];
             prev_list_ind = table_List.SelectedIndex;
@@ -131,19 +131,19 @@ namespace DB_CourseWork
             permissionChange = !permissionChange;
             Text = permissionChange ? "Редагування: Увімкнено" : "Редагування: Вимкнено";
             Change_btn.BackgroundImage = permissionChange ? Resources.on : Resources.off;
-            DB_Grid.ReadOnly= !permissionChange;
+            DB_Grid.ReadOnly = !permissionChange;
             DB_Grid.Columns[0].ReadOnly = true;
-        }        
+        }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-                List<List<object>> table_values = DB_Controller.GetRowValues();
-                using (AccountingContext dbContext = new AccountingContext())
+            List<List<object>> table_values = DB_Controller.GetRowValues();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                try
                 {
-                    try
+                    switch (table_List.SelectedItem as String)
                     {
-                        switch (table_List.SelectedItem as String)
-                        {
-                            case "Користувачі":
+                        case "Користувачі":
                             {
                                 List<User> entities = new List<User>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -155,7 +155,7 @@ namespace DB_CourseWork
                                 dbContext.Users.AddRange(entities);
                             }
                             break;
-                            case "Видатковий матеріал":
+                        case "Видатковий матеріал":
                             {
                                 List<Supply> entities = new List<Supply>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -167,7 +167,7 @@ namespace DB_CourseWork
                                 dbContext.Supplies.AddRange(entities);
                             }
                             break;
-                            case "Периферійні пристрої":
+                        case "Периферійні пристрої":
                             {
                                 List<PeripheralDevice> entities = new List<PeripheralDevice>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -179,7 +179,7 @@ namespace DB_CourseWork
                                 dbContext.PeripheralDevices.AddRange(entities);
                             }
                             break;
-                            case "Комплектуючі ПК":
+                        case "Комплектуючі ПК":
                             {
                                 List<PcСomponent> entities = new List<PcСomponent>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -191,7 +191,7 @@ namespace DB_CourseWork
                                 dbContext.PcСomponents.AddRange(entities);
                             }
                             break;
-                            case "Офісне обладнання":
+                        case "Офісне обладнання":
                             {
                                 List<OfficeEquipment> entities = new List<OfficeEquipment>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -203,7 +203,7 @@ namespace DB_CourseWork
                                 dbContext.OfficeEquipments.AddRange(entities);
                             }
                             break;
-                            case "Мережеве устаткування":
+                        case "Мережеве устаткування":
                             {
                                 List<NetworkDevice> entities = new List<NetworkDevice>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -215,7 +215,7 @@ namespace DB_CourseWork
                                 dbContext.NetworkDevices.AddRange(entities);
                             }
                             break;
-                            case "Персональні комп'ютери":
+                        case "Персональні комп'ютери":
                             {
                                 List<Computer> entities = new List<Computer>();
                                 for (int i = 0; i < table_values.Count; i++)
@@ -227,27 +227,27 @@ namespace DB_CourseWork
                                 dbContext.Computers.AddRange(entities);
                             }
                             break;
-                        }
-                        dbContext.SaveChanges();
-                        saved = true;
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Не всі дані було введено!","Помилка",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        saved = true;
-                    }
-                };
+                    dbContext.SaveChanges();
+                    saved = true;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не всі дані було введено!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    saved = true;
+                }
+            };
         }
 
-        
+
         private void Add_Row_Btn_Click(object sender, EventArgs e)
         {
             int id = DB_Controller.GetNextId();
             var new_inst = Activator.CreateInstance(type);
-            type.GetProperty("Id").SetValue(new_inst,id);
-            
+            type.GetProperty("Id").SetValue(new_inst, id);
+
             entities.Add(new_inst);
-            
+
             DB_Grid.DataSource = null;
             DB_Grid.DataSource = entities;
             DB_Grid.Refresh();
@@ -305,7 +305,7 @@ namespace DB_CourseWork
         private void DB_Grid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             List<object> listInd = DB_Controller.GetIndexNonStringColumns();
-            if (listInd.Contains(DB_Grid.CurrentCell.ColumnIndex)  && e.Control is System.Windows.Forms.TextBox textBox)
+            if (listInd.Contains(DB_Grid.CurrentCell.ColumnIndex) && e.Control is System.Windows.Forms.TextBox textBox)
             {
                 textBox.KeyPress += (s, args) =>
                 {
@@ -316,15 +316,15 @@ namespace DB_CourseWork
                 };
             }
         }
-        private  void Search_Btn_Click(object sender, EventArgs e)
+        private void Search_Btn_Click(object sender, EventArgs e)
         {
-           SearchForm searchForm = new SearchForm();
+            SearchForm searchForm = new SearchForm();
 
-            searchForm.StartPosition= FormStartPosition.CenterParent;
+            searchForm.StartPosition = FormStartPosition.CenterParent;
             using (var dbContext = new AccountingContext())
             {
                 searchForm.nameTable = dbContext.Model.FindEntityType(DB_Controller.Table[table_List.SelectedItem as string]).GetTableName();
-                searchForm.table = dbContext.Model.FindEntityType(DB_Controller.Table[table_List.SelectedItem as string]); 
+                searchForm.table = dbContext.Model.FindEntityType(DB_Controller.Table[table_List.SelectedItem as string]);
             };
             searchForm.ShowDialog();
         }

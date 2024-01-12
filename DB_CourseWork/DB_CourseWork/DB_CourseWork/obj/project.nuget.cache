@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FmaB/O4idzL40dgY4JphAuGqcC38EBoosPZfp8VaxuK7rj0Q52RpC4/KbDtUy9x2CFO7JEtvEcAaT5AtwtZq4w==",
+  "dgSpecHash": "E03seXPhXrkUa/OPzDEFVnnhN/0VYmBe9SUFQMLP6zFqeicz7uUvNF//bGr3fAZJt2frCX+zfkJ/yYYMPuu2tA==",
   "success": true,
-  "projectFilePath": "G:\\Study\\3 курс\\2 семестр\\CourseWork\\Project\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj",
+  "projectFilePath": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\CourseWork_DB\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork\\DB_CourseWork.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\String.Empty\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\String.Empty\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.7\\microsoft.entityframeworkcore.7.0.7.nupkg.sha512",

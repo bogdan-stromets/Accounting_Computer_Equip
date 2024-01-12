@@ -12,7 +12,7 @@ namespace DB_CourseWork
 {
     public static class DB_Controller
     {
-        public static Form1? mainForm { get; set; }
+        public static Accounting? mainForm { get; set; }
         public static SearchForm? searchForm { get; set; }
         private static Dictionary<string, Type> table = new Dictionary<string, Type>()
         {

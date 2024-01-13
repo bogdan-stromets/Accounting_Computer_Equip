@@ -8,15 +8,15 @@ namespace DB_CourseWork.Models;
 public partial class Computer
 {
     public int Id { get; set; }
-    [DisplayName("Виробник")]
+    //[DisplayName("Виробник")]
     public string Manufacturer { get; set; } = null!;
-    [DisplayName("Тип ПК")]
+   // [DisplayName("Тип ПК")]
     public string PcType { get; set; } = null!;
-    [DisplayName("MAC-адреса")]
+   // [DisplayName("MAC-адреса")]
     public string MacAdress { get; set; } = null!;
-    [DisplayName("Статус роботи")]
+  // [DisplayName("Статус роботи")]
     public bool IsWorking { get; set; }
-    [DisplayName("ID Користувача")]
+   // [DisplayName("ID Користувача")]
     public int? UserId { get; set; }
 
     [Browsable(false)]

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             flowLayoutPanelMenu = new FlowLayoutPanel();
             panelLogo = new Panel();
             label_Menu = new Label();
@@ -42,18 +45,26 @@
             btn_NetworkDevices = new Button();
             btn_Tables = new Button();
             btn_Computers = new Button();
+            search_panel = new Panel();
+            search_btn_small = new Button();
+            search_textbox = new TextBox();
             btn_Search = new Button();
-            btn_Save = new Button();
             btn_Change = new Button();
+            btn_Save = new Button();
             btn_Add = new Button();
             btn_Remove = new Button();
             Tables_btn_timer = new System.Windows.Forms.Timer(components);
-            DB_Grid = new DataGridView();
             Menu_Timer = new System.Windows.Forms.Timer(components);
+            DB_Grid = new DoubleBufferedDataGridView();
+            Grid_panel = new Panel();
+            Grid_timer = new System.Windows.Forms.Timer(components);
+            Search_timer = new System.Windows.Forms.Timer(components);
             flowLayoutPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panel_Tables.SuspendLayout();
+            search_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DB_Grid).BeginInit();
+            Grid_panel.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanelMenu
@@ -61,14 +72,14 @@
             flowLayoutPanelMenu.BackColor = Color.FromArgb(50, 52, 77);
             flowLayoutPanelMenu.Controls.Add(panelLogo);
             flowLayoutPanelMenu.Controls.Add(panel_Tables);
-            flowLayoutPanelMenu.Controls.Add(btn_Search);
-            flowLayoutPanelMenu.Controls.Add(btn_Save);
+            flowLayoutPanelMenu.Controls.Add(search_panel);
             flowLayoutPanelMenu.Controls.Add(btn_Change);
+            flowLayoutPanelMenu.Controls.Add(btn_Save);
             flowLayoutPanelMenu.Controls.Add(btn_Add);
             flowLayoutPanelMenu.Controls.Add(btn_Remove);
             flowLayoutPanelMenu.Dock = DockStyle.Left;
             flowLayoutPanelMenu.Location = new Point(0, 0);
-            flowLayoutPanelMenu.MaximumSize = new Size(220, 702);
+            flowLayoutPanelMenu.MaximumSize = new Size(199, 702);
             flowLayoutPanelMenu.MinimumSize = new Size(84, 702);
             flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
             flowLayoutPanelMenu.Size = new Size(84, 702);
@@ -79,10 +90,10 @@
             panelLogo.BackColor = Color.DarkSlateGray;
             panelLogo.Controls.Add(label_Menu);
             panelLogo.Controls.Add(btn_Menu);
-            panelLogo.Dock = DockStyle.Top;
-            panelLogo.Location = new Point(3, 3);
+            panelLogo.Location = new Point(0, 0);
+            panelLogo.Margin = new Padding(0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(217, 73);
+            panelLogo.Size = new Size(220, 73);
             panelLogo.TabIndex = 0;
             // 
             // label_Menu
@@ -91,9 +102,9 @@
             label_Menu.ForeColor = Color.Gainsboro;
             label_Menu.Location = new Point(70, 28);
             label_Menu.Name = "label_Menu";
-            label_Menu.Size = new Size(47, 15);
+            label_Menu.Size = new Size(50, 15);
             label_Menu.TabIndex = 8;
-            label_Menu.Text = "   Menu";
+            label_Menu.Text = "    Menu";
             // 
             // btn_Menu
             // 
@@ -119,7 +130,8 @@
             panel_Tables.Controls.Add(btn_NetworkDevices);
             panel_Tables.Controls.Add(btn_Tables);
             panel_Tables.Controls.Add(btn_Computers);
-            panel_Tables.Location = new Point(3, 82);
+            panel_Tables.Location = new Point(0, 73);
+            panel_Tables.Margin = new Padding(0);
             panel_Tables.MaximumSize = new Size(222, 400);
             panel_Tables.MinimumSize = new Size(222, 79);
             panel_Tables.Name = "panel_Tables";
@@ -243,10 +255,11 @@
             btn_Tables.Image = Properties.Resources.tables;
             btn_Tables.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Tables.Location = new Point(0, 0);
+            btn_Tables.Margin = new Padding(0);
             btn_Tables.Name = "btn_Tables";
             btn_Tables.Size = new Size(217, 85);
             btn_Tables.TabIndex = 1;
-            btn_Tables.Text = "   Tables";
+            btn_Tables.Text = "    Tables";
             btn_Tables.TextAlign = ContentAlignment.MiddleLeft;
             btn_Tables.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Tables.UseVisualStyleBackColor = true;
@@ -270,6 +283,49 @@
             btn_Computers.UseVisualStyleBackColor = true;
             btn_Computers.Click += btn_Computers_Click;
             // 
+            // search_panel
+            // 
+            search_panel.Controls.Add(search_btn_small);
+            search_panel.Controls.Add(search_textbox);
+            search_panel.Controls.Add(btn_Search);
+            search_panel.Location = new Point(0, 152);
+            search_panel.Margin = new Padding(0);
+            search_panel.MaximumSize = new Size(223, 104);
+            search_panel.MinimumSize = new Size(223, 75);
+            search_panel.Name = "search_panel";
+            search_panel.Size = new Size(223, 75);
+            search_panel.TabIndex = 8;
+            // 
+            // search_btn_small
+            // 
+            search_btn_small.FlatAppearance.BorderSize = 0;
+            search_btn_small.FlatStyle = FlatStyle.Flat;
+            search_btn_small.ForeColor = Color.Gainsboro;
+            search_btn_small.Image = Properties.Resources.components;
+            search_btn_small.ImageAlign = ContentAlignment.TopCenter;
+            search_btn_small.Location = new Point(158, 76);
+            search_btn_small.Margin = new Padding(0, 3, 3, 3);
+            search_btn_small.Name = "search_btn_small";
+            search_btn_small.Size = new Size(31, 22);
+            search_btn_small.TabIndex = 3;
+            search_btn_small.Text = "    Search";
+            search_btn_small.TextAlign = ContentAlignment.MiddleLeft;
+            search_btn_small.TextImageRelation = TextImageRelation.ImageBeforeText;
+            search_btn_small.UseVisualStyleBackColor = true;
+            search_btn_small.Click += search_btn_small_Click;
+            // 
+            // search_textbox
+            // 
+            search_textbox.BackColor = Color.FromArgb(50, 52, 77);
+            search_textbox.BorderStyle = BorderStyle.FixedSingle;
+            search_textbox.ForeColor = Color.Gainsboro;
+            search_textbox.Location = new Point(4, 76);
+            search_textbox.Name = "search_textbox";
+            search_textbox.Size = new Size(141, 23);
+            search_textbox.TabIndex = 4;
+            search_textbox.Text = "Search";
+            search_textbox.Click += search_textbox_Click;
+            // 
             // btn_Search
             // 
             btn_Search.FlatAppearance.BorderSize = 0;
@@ -277,32 +333,16 @@
             btn_Search.ForeColor = Color.Gainsboro;
             btn_Search.Image = Properties.Resources.search;
             btn_Search.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Search.Location = new Point(3, 167);
+            btn_Search.Location = new Point(4, 3);
+            btn_Search.Margin = new Padding(0);
             btn_Search.Name = "btn_Search";
-            btn_Search.Size = new Size(217, 68);
+            btn_Search.Size = new Size(216, 67);
             btn_Search.TabIndex = 2;
-            btn_Search.Text = "   Search";
+            btn_Search.Text = "    Search";
             btn_Search.TextAlign = ContentAlignment.MiddleLeft;
             btn_Search.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Search.UseVisualStyleBackColor = true;
             btn_Search.Click += btn_Search_Click;
-            // 
-            // btn_Save
-            // 
-            btn_Save.FlatAppearance.BorderSize = 0;
-            btn_Save.FlatStyle = FlatStyle.Flat;
-            btn_Save.ForeColor = Color.Gainsboro;
-            btn_Save.Image = Properties.Resources.save;
-            btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Save.Location = new Point(3, 241);
-            btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(217, 68);
-            btn_Save.TabIndex = 7;
-            btn_Save.Text = "   Save";
-            btn_Save.TextAlign = ContentAlignment.MiddleLeft;
-            btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_Save.UseVisualStyleBackColor = true;
-            btn_Save.Click += btn_Save_Click;
             // 
             // btn_Change
             // 
@@ -311,15 +351,34 @@
             btn_Change.ForeColor = Color.Gainsboro;
             btn_Change.Image = Properties.Resources.tables;
             btn_Change.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Change.Location = new Point(3, 315);
+            btn_Change.Location = new Point(0, 230);
+            btn_Change.Margin = new Padding(0, 3, 3, 3);
             btn_Change.Name = "btn_Change";
             btn_Change.Size = new Size(217, 68);
             btn_Change.TabIndex = 8;
-            btn_Change.Text = "   Change";
+            btn_Change.Text = "    Change";
             btn_Change.TextAlign = ContentAlignment.MiddleLeft;
             btn_Change.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Change.UseVisualStyleBackColor = true;
             btn_Change.Click += btn_Change_Click;
+            // 
+            // btn_Save
+            // 
+            btn_Save.FlatAppearance.BorderSize = 0;
+            btn_Save.FlatStyle = FlatStyle.Flat;
+            btn_Save.ForeColor = Color.Gainsboro;
+            btn_Save.Image = Properties.Resources.save;
+            btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Save.Location = new Point(0, 304);
+            btn_Save.Margin = new Padding(0, 3, 3, 3);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new Size(217, 68);
+            btn_Save.TabIndex = 7;
+            btn_Save.Text = "    Save";
+            btn_Save.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click;
             // 
             // btn_Add
             // 
@@ -328,11 +387,12 @@
             btn_Add.ForeColor = Color.Gainsboro;
             btn_Add.Image = Properties.Resources.search;
             btn_Add.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Add.Location = new Point(3, 389);
+            btn_Add.Location = new Point(0, 378);
+            btn_Add.Margin = new Padding(0, 3, 3, 3);
             btn_Add.Name = "btn_Add";
             btn_Add.Size = new Size(217, 68);
             btn_Add.TabIndex = 9;
-            btn_Add.Text = "   +";
+            btn_Add.Text = "    +";
             btn_Add.TextAlign = ContentAlignment.MiddleLeft;
             btn_Add.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Add.UseVisualStyleBackColor = true;
@@ -345,11 +405,12 @@
             btn_Remove.ForeColor = Color.Gainsboro;
             btn_Remove.Image = Properties.Resources.search;
             btn_Remove.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Remove.Location = new Point(3, 463);
+            btn_Remove.Location = new Point(0, 452);
+            btn_Remove.Margin = new Padding(0, 3, 3, 3);
             btn_Remove.Name = "btn_Remove";
             btn_Remove.Size = new Size(217, 68);
             btn_Remove.TabIndex = 10;
-            btn_Remove.Text = "   -";
+            btn_Remove.Text = "    -";
             btn_Remove.TextAlign = ContentAlignment.MiddleLeft;
             btn_Remove.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Remove.UseVisualStyleBackColor = true;
@@ -357,30 +418,73 @@
             // 
             // Tables_btn_timer
             // 
-            Tables_btn_timer.Interval = 2;
+            Tables_btn_timer.Interval = 1;
             Tables_btn_timer.Tick += Tables_btn_timer_Tick;
+            // 
+            // Menu_Timer
+            // 
+            Menu_Timer.Interval = 1;
+            Menu_Timer.Tick += Menu_Timer_Tick;
             // 
             // DB_Grid
             // 
             DB_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DB_Grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             DB_Grid.BackgroundColor = Color.White;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.OliveDrab;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            DB_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             DB_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DB_Grid.GridColor = Color.White;
-            DB_Grid.Location = new Point(106, 12);
-            DB_Grid.MaximumSize = new Size(1217, 669);
-            DB_Grid.MinimumSize = new Size(1090, 669);
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.OliveDrab;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            DB_Grid.DefaultCellStyle = dataGridViewCellStyle5;
+            DB_Grid.Dock = DockStyle.Fill;
+            DB_Grid.GridColor = Color.Black;
+            DB_Grid.Location = new Point(0, 0);
             DB_Grid.Name = "DB_Grid";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.OliveDrab;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            DB_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             DB_Grid.RowTemplate.Height = 25;
-            DB_Grid.Size = new Size(1217, 669);
+            DB_Grid.Size = new Size(1236, 614);
             DB_Grid.TabIndex = 6;
             DB_Grid.CellValueChanged += DB_Grid_CellValueChanged;
             DB_Grid.EditingControlShowing += DB_Grid_EditingControlShowing;
             // 
-            // Menu_Timer
+            // Grid_panel
             // 
-            Menu_Timer.Interval = 2;
-            Menu_Timer.Tick += Menu_Timer_Tick;
+            Grid_panel.Anchor = AnchorStyles.Right;
+            Grid_panel.Controls.Add(DB_Grid);
+            Grid_panel.Location = new Point(90, 76);
+            Grid_panel.MaximumSize = new Size(1236, 614);
+            Grid_panel.MinimumSize = new Size(1121, 614);
+            Grid_panel.Name = "Grid_panel";
+            Grid_panel.Size = new Size(1236, 614);
+            Grid_panel.TabIndex = 7;
+            // 
+            // Grid_timer
+            // 
+            Grid_timer.Interval = 1;
+            Grid_timer.Tick += Grid_timer_Tick;
+            // 
+            // Search_timer
+            // 
+            Search_timer.Interval = 1;
+            Search_timer.Tick += Search_timer_Tick;
             // 
             // Accounting
             // 
@@ -388,16 +492,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(1338, 702);
-            Controls.Add(DB_Grid);
+            Controls.Add(Grid_panel);
             Controls.Add(flowLayoutPanelMenu);
+            MaximizeBox = false;
             Name = "Accounting";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Accounting";
             FormClosing += Accounting_FormClosing;
             flowLayoutPanelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             panelLogo.PerformLayout();
             panel_Tables.ResumeLayout(false);
+            search_panel.ResumeLayout(false);
+            search_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DB_Grid).EndInit();
+            Grid_panel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -416,7 +525,6 @@
         private Button btn_NetworkDevices;
         private Button btn_Computers;
         private System.Windows.Forms.Timer Tables_btn_timer;
-        internal DataGridView DB_Grid;
         private Button btn_Save;
         private Button btn_Change;
         private Button btn_Add;
@@ -424,5 +532,12 @@
         private Button btn_Menu;
         private Label label_Menu;
         private System.Windows.Forms.Timer Menu_Timer;
+        internal DoubleBufferedDataGridView DB_Grid;
+        private Panel Grid_panel;
+        private System.Windows.Forms.Timer Grid_timer;
+        private Panel search_panel;
+        private TextBox search_textbox;
+        private Button search_btn_small;
+        private System.Windows.Forms.Timer Search_timer;
     }
 }

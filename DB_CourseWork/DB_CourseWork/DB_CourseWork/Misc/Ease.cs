@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DB_CourseWork
+namespace DB_CourseWork.Misc
 {
     enum EaseType
     {
@@ -15,7 +15,7 @@ namespace DB_CourseWork
         CubicOut,
         CubicInOut,
         QuarterIn,
-        CirculInOut, CirculOut ,
+        CirculInOut, CirculOut,
         CirculIn,
         ExpInOut,
         ExpOut,
@@ -35,49 +35,49 @@ namespace DB_CourseWork
         private double result = 0;
         private delegate double EaseMethod();
 
-        public double GetValue => result; 
-       
-        public Ease(double t,double startValue, double changeValue, double duration,EaseType type = EaseType.Linear)
+        public double GetValue => result;
+
+        public Ease(double t, double startValue, double changeValue, double duration, EaseType type = EaseType.Linear)
         {
             this.t = t;
             this.startValue = startValue;
             this.changeValue = changeValue;
             this.duration = duration;
-
-            EaseMethod func;
-            switch (type)
+            #region Pick Ease
+            EaseMethod func = type switch
             {
-                    case EaseType.SinOut: func = SinOut; break;
-                    case EaseType.SinInOut: func = SinInOut; break;
-                    case EaseType.SinIn: func = SinIn; break;
-                    case EaseType.QuinticOut: func = QuinticOut; break;
-                    case EaseType.QuinticInOut: func = QuinticInOut; break;
-                    case EaseType.QuinticIn: func = QuinticIn;  break;
-                    case EaseType.QuarterOut: func = QuarterOut; break;
-                    case EaseType.QuarterInOut: func = QuarterInOut; break;
-                    case EaseType.QuarterIn: func = QuarterIn; break;
-                    case EaseType.QuadraticOut: func = QuadraticOut; break;
-                    case EaseType.QuadraticIn: func = QuadraticIn; break;
-                    case EaseType.Linear: func = Linear; break;
-                    case EaseType.ExpOut: func = ExpOut; break;
-                    case EaseType.ExpInOut: func = ExpInOut; break;
-                    case EaseType.ExpIn: func = ExpIn; break;
-                    case EaseType.CubicOut: func = CubicOut; break;
-                    case EaseType.CubicInOut: func = CubicInOut; break;
-                    case EaseType.CubicIn: func = CubicIn; break;
-                    case EaseType.CirculOut: func = CirculOut; break;
-                    case EaseType.CirculInOut: func = CirculInOut; break;
-                    case EaseType.CirculIn: func = CirculIn; break;
-                    default: func = Linear; break;
-            }
+                EaseType.SinOut => SinOut,
+                EaseType.SinInOut => SinInOut,
+                EaseType.SinIn => SinIn,
+                EaseType.QuinticOut => QuinticOut,
+                EaseType.QuinticInOut => QuinticInOut,
+                EaseType.QuinticIn => QuinticIn,
+                EaseType.QuarterOut => QuarterOut,
+                EaseType.QuarterInOut => QuarterInOut,
+                EaseType.QuarterIn => QuarterIn,
+                EaseType.QuadraticOut => QuadraticOut,
+                EaseType.QuadraticIn => QuadraticIn,
+                EaseType.Linear => Linear,
+                EaseType.ExpOut => ExpOut,
+                EaseType.ExpInOut => ExpInOut,
+                EaseType.ExpIn => ExpIn,
+                EaseType.CubicOut => CubicOut,
+                EaseType.CubicInOut => CubicInOut,
+                EaseType.CubicIn => CubicIn,
+                EaseType.CirculOut => CirculOut,
+                EaseType.CirculInOut => CirculInOut,
+                EaseType.CirculIn => CirculIn,
+                _ => Linear,
+            };
             result = func();
+            #endregion
         }
 
-        
+        #region Ease Func
         double Linear()
         {
             return changeValue * t / duration + startValue;
-        }     
+        }
         double QuadraticIn()
         {
             t /= duration;
@@ -91,12 +91,12 @@ namespace DB_CourseWork
                 return changeValue / 2 * Math.Pow(t, 2) + startValue;
             }
             return -changeValue / 2 * (t * (t - 2) - 1) + startValue;
-        }     
+        }
         double CubicIn()
         {
             t /= duration;
             return changeValue * Math.Pow(t, 3) + startValue;
-        }     
+        }
         double CubicOut()
         {
             t /= duration;
@@ -206,5 +206,6 @@ namespace DB_CourseWork
             t -= 2;
             return changeValue / 2 * (Math.Sqrt(1 - Math.Pow(t, 2) + 1) + startValue);
         }
+        #endregion
     }
 }

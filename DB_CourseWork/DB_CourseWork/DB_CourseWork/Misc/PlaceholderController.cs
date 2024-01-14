@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace DB_CourseWork
+namespace DB_CourseWork.Misc
 {
     public static class PlaceholderController
     {
-        public static void AddPlaceholder(this TextBox tb, string placeholder_txt)
+        public static void AddPlaceholder(this TextBox tb, string placeholder_txt, Color placeholderColor, Color textColor)
         {
-            tb.ForeColor = Color.Gray;
+            tb.ForeColor = placeholderColor;
             tb.Text = placeholder_txt;
 
             tb.Enter += (s, e) =>
             {
                 if (tb.Text == placeholder_txt)
                 {
-                    tb.Text = String.Empty;
-                    tb.ForeColor = Color.Black;
+                    tb.Text = string.Empty;
+                    tb.ForeColor = textColor;
                 }
             };
 
-            tb.Leave += (s, e) => 
+            tb.Leave += (s, e) =>
             {
-                if (tb.Text == String.Empty)
+                if (tb.Text == string.Empty)
                 {
-                    tb.ForeColor = Color.Gray; 
+                    tb.ForeColor = placeholderColor;
                     tb.Text = placeholder_txt;
                 }
             };

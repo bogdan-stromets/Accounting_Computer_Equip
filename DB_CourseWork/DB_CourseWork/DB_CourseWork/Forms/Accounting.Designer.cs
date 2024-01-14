@@ -1,4 +1,6 @@
-﻿namespace DB_CourseWork
+﻿using DB_CourseWork.Misc;
+
+namespace DB_CourseWork
 {
     partial class Accounting
     {
@@ -29,80 +31,93 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accounting));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             flowLayoutPanelMenu = new FlowLayoutPanel();
             panelLogo = new Panel();
             label_Menu = new Label();
             btn_Menu = new Button();
+            btn_Home = new Button();
             panel_Tables = new Panel();
             btn_Users = new Button();
             btn_PeripheralDevices = new Button();
             btn_Components = new Button();
             btn_Supplies = new Button();
+            btn_Tables = new Button();
             btn_OfficeEquip = new Button();
             btn_NetworkDevices = new Button();
-            btn_Tables = new Button();
             btn_Computers = new Button();
             search_panel = new Panel();
             search_btn_small = new Button();
             search_textbox = new TextBox();
             btn_Search = new Button();
-            btn_Change = new Button();
+            toggleSwitch_Change = new ToggleSwitch();
             btn_Save = new Button();
             btn_Add = new Button();
             btn_Remove = new Button();
             Tables_btn_timer = new System.Windows.Forms.Timer(components);
             Menu_Timer = new System.Windows.Forms.Timer(components);
-            DB_Grid = new DoubleBufferedDataGridView();
-            Grid_panel = new Panel();
             Grid_timer = new System.Windows.Forms.Timer(components);
             Search_timer = new System.Windows.Forms.Timer(components);
+            logo_picture = new PictureBox();
+            Hide_logo_timer = new System.Windows.Forms.Timer(components);
+            btn_Close = new Button();
+            Head_panel = new Panel();
+            curr_table_label = new Label();
+            btn_Minimize = new Button();
+            Grid_panel = new Panel();
+            DB_Grid = new DoubleBufferedDataGridView();
             flowLayoutPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panel_Tables.SuspendLayout();
             search_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DB_Grid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)logo_picture).BeginInit();
+            Head_panel.SuspendLayout();
             Grid_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DB_Grid).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanelMenu
             // 
-            flowLayoutPanelMenu.BackColor = Color.FromArgb(50, 52, 77);
+            flowLayoutPanelMenu.BackColor = Color.FromArgb(41, 98, 72);
             flowLayoutPanelMenu.Controls.Add(panelLogo);
+            flowLayoutPanelMenu.Controls.Add(btn_Home);
             flowLayoutPanelMenu.Controls.Add(panel_Tables);
             flowLayoutPanelMenu.Controls.Add(search_panel);
-            flowLayoutPanelMenu.Controls.Add(btn_Change);
+            flowLayoutPanelMenu.Controls.Add(toggleSwitch_Change);
             flowLayoutPanelMenu.Controls.Add(btn_Save);
             flowLayoutPanelMenu.Controls.Add(btn_Add);
             flowLayoutPanelMenu.Controls.Add(btn_Remove);
             flowLayoutPanelMenu.Dock = DockStyle.Left;
             flowLayoutPanelMenu.Location = new Point(0, 0);
-            flowLayoutPanelMenu.MaximumSize = new Size(199, 702);
-            flowLayoutPanelMenu.MinimumSize = new Size(84, 702);
+            flowLayoutPanelMenu.MaximumSize = new Size(199, 790);
+            flowLayoutPanelMenu.MinimumSize = new Size(84, 749);
             flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
-            flowLayoutPanelMenu.Size = new Size(84, 702);
+            flowLayoutPanelMenu.Size = new Size(199, 790);
             flowLayoutPanelMenu.TabIndex = 0;
             // 
             // panelLogo
             // 
-            panelLogo.BackColor = Color.DarkSlateGray;
+            panelLogo.BackColor = Color.FromArgb(60, 138, 103);
             panelLogo.Controls.Add(label_Menu);
             panelLogo.Controls.Add(btn_Menu);
             panelLogo.Location = new Point(0, 0);
             panelLogo.Margin = new Padding(0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(220, 73);
+            panelLogo.Size = new Size(220, 78);
             panelLogo.TabIndex = 0;
             // 
             // label_Menu
             // 
             label_Menu.AutoSize = true;
             label_Menu.ForeColor = Color.Gainsboro;
-            label_Menu.Location = new Point(70, 28);
+            label_Menu.Location = new Point(70, 30);
             label_Menu.Name = "label_Menu";
-            label_Menu.Size = new Size(50, 15);
+            label_Menu.Size = new Size(54, 16);
             label_Menu.TabIndex = 8;
             label_Menu.Text = "    Menu";
             // 
@@ -113,12 +128,30 @@
             btn_Menu.FlatAppearance.BorderSize = 0;
             btn_Menu.FlatStyle = FlatStyle.Flat;
             btn_Menu.ForeColor = Color.Gainsboro;
-            btn_Menu.Location = new Point(18, 18);
+            btn_Menu.Location = new Point(18, 19);
             btn_Menu.Name = "btn_Menu";
-            btn_Menu.Size = new Size(46, 34);
+            btn_Menu.Size = new Size(46, 36);
             btn_Menu.TabIndex = 7;
             btn_Menu.UseVisualStyleBackColor = true;
             btn_Menu.Click += btn_Menu_Click;
+            // 
+            // btn_Home
+            // 
+            btn_Home.FlatAppearance.BorderSize = 0;
+            btn_Home.FlatStyle = FlatStyle.Flat;
+            btn_Home.ForeColor = Color.Gainsboro;
+            btn_Home.Image = Properties.Resources.home1;
+            btn_Home.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Home.Location = new Point(0, 81);
+            btn_Home.Margin = new Padding(0, 3, 3, 3);
+            btn_Home.Name = "btn_Home";
+            btn_Home.Size = new Size(217, 72);
+            btn_Home.TabIndex = 11;
+            btn_Home.Text = "      Home";
+            btn_Home.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Home.UseVisualStyleBackColor = true;
+            btn_Home.Click += btn_Home_Click;
             // 
             // panel_Tables
             // 
@@ -126,16 +159,16 @@
             panel_Tables.Controls.Add(btn_PeripheralDevices);
             panel_Tables.Controls.Add(btn_Components);
             panel_Tables.Controls.Add(btn_Supplies);
+            panel_Tables.Controls.Add(btn_Tables);
             panel_Tables.Controls.Add(btn_OfficeEquip);
             panel_Tables.Controls.Add(btn_NetworkDevices);
-            panel_Tables.Controls.Add(btn_Tables);
             panel_Tables.Controls.Add(btn_Computers);
-            panel_Tables.Location = new Point(0, 73);
+            panel_Tables.Location = new Point(0, 156);
             panel_Tables.Margin = new Padding(0);
-            panel_Tables.MaximumSize = new Size(222, 400);
-            panel_Tables.MinimumSize = new Size(222, 79);
+            panel_Tables.MaximumSize = new Size(222, 427);
+            panel_Tables.MinimumSize = new Size(222, 84);
             panel_Tables.Name = "panel_Tables";
-            panel_Tables.Size = new Size(222, 79);
+            panel_Tables.Size = new Size(222, 84);
             panel_Tables.TabIndex = 6;
             // 
             // btn_Users
@@ -145,10 +178,10 @@
             btn_Users.ForeColor = Color.Gainsboro;
             btn_Users.Image = Properties.Resources.users;
             btn_Users.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Users.Location = new Point(0, 356);
+            btn_Users.Location = new Point(0, 380);
             btn_Users.Name = "btn_Users";
             btn_Users.Padding = new Padding(10, 0, 0, 0);
-            btn_Users.Size = new Size(217, 38);
+            btn_Users.Size = new Size(217, 40);
             btn_Users.TabIndex = 8;
             btn_Users.Text = "Users";
             btn_Users.TextAlign = ContentAlignment.MiddleLeft;
@@ -163,10 +196,10 @@
             btn_PeripheralDevices.ForeColor = Color.Gainsboro;
             btn_PeripheralDevices.Image = Properties.Resources.perif;
             btn_PeripheralDevices.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_PeripheralDevices.Location = new Point(0, 312);
+            btn_PeripheralDevices.Location = new Point(0, 333);
             btn_PeripheralDevices.Name = "btn_PeripheralDevices";
             btn_PeripheralDevices.Padding = new Padding(10, 0, 0, 0);
-            btn_PeripheralDevices.Size = new Size(217, 38);
+            btn_PeripheralDevices.Size = new Size(217, 40);
             btn_PeripheralDevices.TabIndex = 7;
             btn_PeripheralDevices.Text = "Peripheral Devices";
             btn_PeripheralDevices.TextAlign = ContentAlignment.MiddleLeft;
@@ -181,10 +214,10 @@
             btn_Components.ForeColor = Color.Gainsboro;
             btn_Components.Image = Properties.Resources.components;
             btn_Components.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Components.Location = new Point(0, 267);
+            btn_Components.Location = new Point(0, 285);
             btn_Components.Name = "btn_Components";
             btn_Components.Padding = new Padding(10, 0, 0, 0);
-            btn_Components.Size = new Size(217, 38);
+            btn_Components.Size = new Size(217, 40);
             btn_Components.TabIndex = 6;
             btn_Components.Text = "PC Components";
             btn_Components.TextAlign = ContentAlignment.MiddleLeft;
@@ -199,16 +232,35 @@
             btn_Supplies.ForeColor = Color.Gainsboro;
             btn_Supplies.Image = Properties.Resources.supply;
             btn_Supplies.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Supplies.Location = new Point(0, 223);
+            btn_Supplies.Location = new Point(0, 238);
             btn_Supplies.Name = "btn_Supplies";
             btn_Supplies.Padding = new Padding(10, 0, 0, 0);
-            btn_Supplies.Size = new Size(217, 38);
+            btn_Supplies.Size = new Size(217, 40);
             btn_Supplies.TabIndex = 5;
             btn_Supplies.Text = "Supplies";
             btn_Supplies.TextAlign = ContentAlignment.MiddleLeft;
             btn_Supplies.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Supplies.UseVisualStyleBackColor = true;
             btn_Supplies.Click += btn_Supplies_Click;
+            // 
+            // btn_Tables
+            // 
+            btn_Tables.FlatAppearance.BorderSize = 0;
+            btn_Tables.FlatStyle = FlatStyle.Flat;
+            btn_Tables.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Tables.ForeColor = Color.Gainsboro;
+            btn_Tables.Image = Properties.Resources.tables;
+            btn_Tables.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Tables.Location = new Point(0, 0);
+            btn_Tables.Margin = new Padding(0);
+            btn_Tables.Name = "btn_Tables";
+            btn_Tables.Size = new Size(217, 91);
+            btn_Tables.TabIndex = 1;
+            btn_Tables.Text = "      Tables";
+            btn_Tables.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Tables.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Tables.UseVisualStyleBackColor = true;
+            btn_Tables.Click += btn_Tables_Click;
             // 
             // btn_OfficeEquip
             // 
@@ -217,10 +269,10 @@
             btn_OfficeEquip.ForeColor = Color.Gainsboro;
             btn_OfficeEquip.Image = Properties.Resources.office;
             btn_OfficeEquip.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_OfficeEquip.Location = new Point(0, 135);
+            btn_OfficeEquip.Location = new Point(0, 144);
             btn_OfficeEquip.Name = "btn_OfficeEquip";
             btn_OfficeEquip.Padding = new Padding(10, 0, 0, 0);
-            btn_OfficeEquip.Size = new Size(217, 38);
+            btn_OfficeEquip.Size = new Size(217, 40);
             btn_OfficeEquip.TabIndex = 4;
             btn_OfficeEquip.Text = "Office Equipment";
             btn_OfficeEquip.TextAlign = ContentAlignment.MiddleLeft;
@@ -235,35 +287,16 @@
             btn_NetworkDevices.ForeColor = Color.Gainsboro;
             btn_NetworkDevices.Image = Properties.Resources.wifi;
             btn_NetworkDevices.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_NetworkDevices.Location = new Point(0, 179);
+            btn_NetworkDevices.Location = new Point(0, 191);
             btn_NetworkDevices.Name = "btn_NetworkDevices";
             btn_NetworkDevices.Padding = new Padding(10, 0, 0, 0);
-            btn_NetworkDevices.Size = new Size(217, 38);
+            btn_NetworkDevices.Size = new Size(217, 40);
             btn_NetworkDevices.TabIndex = 3;
             btn_NetworkDevices.Text = "Network Devices";
             btn_NetworkDevices.TextAlign = ContentAlignment.MiddleLeft;
             btn_NetworkDevices.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_NetworkDevices.UseVisualStyleBackColor = true;
             btn_NetworkDevices.Click += btn_NetworkDevices_Click;
-            // 
-            // btn_Tables
-            // 
-            btn_Tables.FlatAppearance.BorderSize = 0;
-            btn_Tables.FlatStyle = FlatStyle.Flat;
-            btn_Tables.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_Tables.ForeColor = Color.Gainsboro;
-            btn_Tables.Image = Properties.Resources.tables;
-            btn_Tables.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Tables.Location = new Point(0, 0);
-            btn_Tables.Margin = new Padding(0);
-            btn_Tables.Name = "btn_Tables";
-            btn_Tables.Size = new Size(217, 85);
-            btn_Tables.TabIndex = 1;
-            btn_Tables.Text = "    Tables";
-            btn_Tables.TextAlign = ContentAlignment.MiddleLeft;
-            btn_Tables.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_Tables.UseVisualStyleBackColor = true;
-            btn_Tables.Click += btn_Tables_Click;
             // 
             // btn_Computers
             // 
@@ -272,10 +305,10 @@
             btn_Computers.ForeColor = Color.Gainsboro;
             btn_Computers.Image = Properties.Resources.pc;
             btn_Computers.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Computers.Location = new Point(0, 91);
+            btn_Computers.Location = new Point(0, 97);
             btn_Computers.Name = "btn_Computers";
             btn_Computers.Padding = new Padding(10, 0, 0, 0);
-            btn_Computers.Size = new Size(217, 38);
+            btn_Computers.Size = new Size(217, 40);
             btn_Computers.TabIndex = 2;
             btn_Computers.Text = "Computers";
             btn_Computers.TextAlign = ContentAlignment.MiddleLeft;
@@ -288,12 +321,12 @@
             search_panel.Controls.Add(search_btn_small);
             search_panel.Controls.Add(search_textbox);
             search_panel.Controls.Add(btn_Search);
-            search_panel.Location = new Point(0, 152);
+            search_panel.Location = new Point(0, 240);
             search_panel.Margin = new Padding(0);
-            search_panel.MaximumSize = new Size(223, 104);
-            search_panel.MinimumSize = new Size(223, 75);
+            search_panel.MaximumSize = new Size(223, 111);
+            search_panel.MinimumSize = new Size(223, 80);
             search_panel.Name = "search_panel";
-            search_panel.Size = new Size(223, 75);
+            search_panel.Size = new Size(223, 80);
             search_panel.TabIndex = 8;
             // 
             // search_btn_small
@@ -301,12 +334,12 @@
             search_btn_small.FlatAppearance.BorderSize = 0;
             search_btn_small.FlatStyle = FlatStyle.Flat;
             search_btn_small.ForeColor = Color.Gainsboro;
-            search_btn_small.Image = Properties.Resources.components;
+            search_btn_small.Image = Properties.Resources.small_search;
             search_btn_small.ImageAlign = ContentAlignment.TopCenter;
-            search_btn_small.Location = new Point(158, 76);
+            search_btn_small.Location = new Point(167, 83);
             search_btn_small.Margin = new Padding(0, 3, 3, 3);
             search_btn_small.Name = "search_btn_small";
-            search_btn_small.Size = new Size(31, 22);
+            search_btn_small.Size = new Size(23, 24);
             search_btn_small.TabIndex = 3;
             search_btn_small.Text = "    Search";
             search_btn_small.TextAlign = ContentAlignment.MiddleLeft;
@@ -319,9 +352,9 @@
             search_textbox.BackColor = Color.FromArgb(50, 52, 77);
             search_textbox.BorderStyle = BorderStyle.FixedSingle;
             search_textbox.ForeColor = Color.Gainsboro;
-            search_textbox.Location = new Point(4, 76);
+            search_textbox.Location = new Point(4, 83);
             search_textbox.Name = "search_textbox";
-            search_textbox.Size = new Size(141, 23);
+            search_textbox.Size = new Size(160, 23);
             search_textbox.TabIndex = 4;
             search_textbox.Text = "Search";
             // 
@@ -332,34 +365,35 @@
             btn_Search.ForeColor = Color.Gainsboro;
             btn_Search.Image = Properties.Resources.search;
             btn_Search.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Search.Location = new Point(4, 3);
+            btn_Search.Location = new Point(0, 8);
             btn_Search.Margin = new Padding(0);
             btn_Search.Name = "btn_Search";
-            btn_Search.Size = new Size(216, 67);
+            btn_Search.Size = new Size(216, 72);
             btn_Search.TabIndex = 2;
-            btn_Search.Text = "    Search";
+            btn_Search.Text = "      Search";
             btn_Search.TextAlign = ContentAlignment.MiddleLeft;
             btn_Search.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Search.UseVisualStyleBackColor = true;
             btn_Search.Click += btn_Search_Click;
             // 
-            // btn_Change
+            // toggleSwitch_Change
             // 
-            btn_Change.FlatAppearance.BorderSize = 0;
-            btn_Change.FlatStyle = FlatStyle.Flat;
-            btn_Change.ForeColor = Color.Gainsboro;
-            btn_Change.Image = Properties.Resources.tables;
-            btn_Change.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Change.Location = new Point(0, 230);
-            btn_Change.Margin = new Padding(0, 3, 3, 3);
-            btn_Change.Name = "btn_Change";
-            btn_Change.Size = new Size(217, 68);
-            btn_Change.TabIndex = 8;
-            btn_Change.Text = "    Change";
-            btn_Change.TextAlign = ContentAlignment.MiddleLeft;
-            btn_Change.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_Change.UseVisualStyleBackColor = true;
-            btn_Change.Click += btn_Change_Click;
+            toggleSwitch_Change.BackColor = Color.White;
+            toggleSwitch_Change.BackColorOFF = Color.FromArgb(181, 224, 196);
+            toggleSwitch_Change.BackColorON = Color.FromArgb(81, 182, 135);
+            toggleSwitch_Change.Checked = false;
+            toggleSwitch_Change.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            toggleSwitch_Change.ForeColor = Color.Gainsboro;
+            toggleSwitch_Change.Location = new Point(2, 331);
+            toggleSwitch_Change.Margin = new Padding(2, 11, 3, 3);
+            toggleSwitch_Change.Name = "toggleSwitch_Change";
+            toggleSwitch_Change.Size = new Size(158, 53);
+            toggleSwitch_Change.TabIndex = 9;
+            toggleSwitch_Change.Text = " Change OFF";
+            toggleSwitch_Change.TextOnChecked = "";
+            toggleSwitch_Change.ToogleSwitchHeight = 50;
+            toggleSwitch_Change.ToogleSwitchWidth = 80;
+            toggleSwitch_Change.MouseDown += toggleSwitch_Change_MouseDown;
             // 
             // btn_Save
             // 
@@ -368,12 +402,12 @@
             btn_Save.ForeColor = Color.Gainsboro;
             btn_Save.Image = Properties.Resources.save;
             btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Save.Location = new Point(0, 304);
+            btn_Save.Location = new Point(0, 390);
             btn_Save.Margin = new Padding(0, 3, 3, 3);
             btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(217, 68);
+            btn_Save.Size = new Size(217, 72);
             btn_Save.TabIndex = 7;
-            btn_Save.Text = "    Save";
+            btn_Save.Text = "      Save";
             btn_Save.TextAlign = ContentAlignment.MiddleLeft;
             btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Save.UseVisualStyleBackColor = true;
@@ -386,12 +420,12 @@
             btn_Add.ForeColor = Color.Gainsboro;
             btn_Add.Image = Properties.Resources.search;
             btn_Add.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Add.Location = new Point(0, 378);
+            btn_Add.Location = new Point(0, 468);
             btn_Add.Margin = new Padding(0, 3, 3, 3);
             btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(217, 68);
+            btn_Add.Size = new Size(217, 72);
             btn_Add.TabIndex = 9;
-            btn_Add.Text = "    +";
+            btn_Add.Text = "      +";
             btn_Add.TextAlign = ContentAlignment.MiddleLeft;
             btn_Add.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Add.UseVisualStyleBackColor = true;
@@ -404,12 +438,12 @@
             btn_Remove.ForeColor = Color.Gainsboro;
             btn_Remove.Image = Properties.Resources.search;
             btn_Remove.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Remove.Location = new Point(0, 452);
+            btn_Remove.Location = new Point(0, 546);
             btn_Remove.Margin = new Padding(0, 3, 3, 3);
             btn_Remove.Name = "btn_Remove";
-            btn_Remove.Size = new Size(217, 68);
+            btn_Remove.Size = new Size(217, 72);
             btn_Remove.TabIndex = 10;
-            btn_Remove.Text = "    -";
+            btn_Remove.Text = "      -";
             btn_Remove.TextAlign = ContentAlignment.MiddleLeft;
             btn_Remove.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Remove.UseVisualStyleBackColor = true;
@@ -425,56 +459,6 @@
             Menu_Timer.Interval = 1;
             Menu_Timer.Tick += Menu_Timer_Tick;
             // 
-            // DB_Grid
-            // 
-            DB_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DB_Grid.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.OliveDrab;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DB_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            DB_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.OliveDrab;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DB_Grid.DefaultCellStyle = dataGridViewCellStyle2;
-            DB_Grid.Dock = DockStyle.Fill;
-            DB_Grid.GridColor = Color.Black;
-            DB_Grid.Location = new Point(0, 0);
-            DB_Grid.Name = "DB_Grid";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.OliveDrab;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DB_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            DB_Grid.RowTemplate.Height = 25;
-            DB_Grid.Size = new Size(1236, 614);
-            DB_Grid.TabIndex = 6;
-            DB_Grid.CellValueChanged += DB_Grid_CellValueChanged;
-            DB_Grid.EditingControlShowing += DB_Grid_EditingControlShowing;
-            // 
-            // Grid_panel
-            // 
-            Grid_panel.Anchor = AnchorStyles.Right;
-            Grid_panel.Controls.Add(DB_Grid);
-            Grid_panel.Location = new Point(90, 76);
-            Grid_panel.MaximumSize = new Size(1236, 614);
-            Grid_panel.MinimumSize = new Size(1121, 614);
-            Grid_panel.Name = "Grid_panel";
-            Grid_panel.Size = new Size(1236, 614);
-            Grid_panel.TabIndex = 7;
-            // 
             // Grid_timer
             // 
             Grid_timer.Interval = 1;
@@ -485,15 +469,151 @@
             Search_timer.Interval = 1;
             Search_timer.Tick += Search_timer_Tick;
             // 
+            // logo_picture
+            // 
+            logo_picture.BackColor = Color.FromArgb(213, 240, 217);
+            logo_picture.BackgroundImage = (Image)resources.GetObject("logo_picture.BackgroundImage");
+            logo_picture.BackgroundImageLayout = ImageLayout.Zoom;
+            logo_picture.Location = new Point(223, 118);
+            logo_picture.MaximumSize = new Size(971, 580);
+            logo_picture.Name = "logo_picture";
+            logo_picture.Size = new Size(971, 580);
+            logo_picture.TabIndex = 8;
+            logo_picture.TabStop = false;
+            // 
+            // Hide_logo_timer
+            // 
+            Hide_logo_timer.Interval = 1;
+            Hide_logo_timer.Tick += Hide_logo_timer_Tick;
+            // 
+            // btn_Close
+            // 
+            btn_Close.FlatAppearance.BorderSize = 0;
+            btn_Close.FlatStyle = FlatStyle.Flat;
+            btn_Close.Font = new Font("Franklin Gothic Heavy", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Close.ForeColor = Color.White;
+            btn_Close.Location = new Point(1237, 3);
+            btn_Close.Name = "btn_Close";
+            btn_Close.Size = new Size(30, 31);
+            btn_Close.TabIndex = 9;
+            btn_Close.Text = "O";
+            btn_Close.UseVisualStyleBackColor = true;
+            btn_Close.Click += btn_Close_Click;
+            // 
+            // Head_panel
+            // 
+            Head_panel.BackColor = Color.FromArgb(146, 209, 174);
+            Head_panel.Controls.Add(curr_table_label);
+            Head_panel.Controls.Add(btn_Minimize);
+            Head_panel.Controls.Add(btn_Close);
+            Head_panel.Location = new Point(84, 0);
+            Head_panel.Name = "Head_panel";
+            Head_panel.Size = new Size(1270, 78);
+            Head_panel.TabIndex = 10;
+            Head_panel.MouseDown += Head_panel_MouseDown;
+            // 
+            // curr_table_label
+            // 
+            curr_table_label.Anchor = AnchorStyles.None;
+            curr_table_label.AutoSize = true;
+            curr_table_label.FlatStyle = FlatStyle.Flat;
+            curr_table_label.Font = new Font("Arial Rounded MT Bold", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
+            curr_table_label.ForeColor = Color.White;
+            curr_table_label.Location = new Point(587, 19);
+            curr_table_label.Name = "curr_table_label";
+            curr_table_label.Size = new Size(117, 40);
+            curr_table_label.TabIndex = 11;
+            curr_table_label.Text = "Home";
+            curr_table_label.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // btn_Minimize
+            // 
+            btn_Minimize.FlatAppearance.BorderSize = 0;
+            btn_Minimize.FlatStyle = FlatStyle.Flat;
+            btn_Minimize.Font = new Font("Franklin Gothic Heavy", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Minimize.ForeColor = Color.White;
+            btn_Minimize.Location = new Point(1201, 3);
+            btn_Minimize.Name = "btn_Minimize";
+            btn_Minimize.Size = new Size(30, 31);
+            btn_Minimize.TabIndex = 10;
+            btn_Minimize.Text = "O";
+            btn_Minimize.UseVisualStyleBackColor = true;
+            btn_Minimize.Click += btn_Minimize_Click;
+            // 
+            // Grid_panel
+            // 
+            Grid_panel.Anchor = AnchorStyles.Right;
+            Grid_panel.Controls.Add(DB_Grid);
+            Grid_panel.Location = new Point(1360, 100);
+            Grid_panel.MaximumSize = new Size(1236, 655);
+            Grid_panel.MinimumSize = new Size(1121, 655);
+            Grid_panel.Name = "Grid_panel";
+            Grid_panel.Size = new Size(1236, 655);
+            Grid_panel.TabIndex = 7;
+            // 
+            // DB_Grid
+            // 
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            DB_Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DB_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DB_Grid.BackgroundColor = Color.FromArgb(232, 247, 234);
+            DB_Grid.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            DB_Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DB_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            DB_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DB_Grid.DefaultCellStyle = dataGridViewCellStyle3;
+            DB_Grid.Dock = DockStyle.Fill;
+            DB_Grid.EnableHeadersVisualStyles = false;
+            DB_Grid.GridColor = Color.Black;
+            DB_Grid.Location = new Point(0, 0);
+            DB_Grid.Name = "DB_Grid";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            DB_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(181, 224, 196);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            DB_Grid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            DB_Grid.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(181, 224, 196);
+            DB_Grid.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            DB_Grid.RowTemplate.Height = 25;
+            DB_Grid.Size = new Size(1236, 655);
+            DB_Grid.TabIndex = 6;
+            DB_Grid.CellValueChanged += DB_Grid_CellValueChanged;
+            DB_Grid.EditingControlShowing += DB_Grid_EditingControlShowing;
+            // 
             // Accounting
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(1338, 702);
-            Controls.Add(Grid_panel);
+            BackColor = Color.FromArgb(213, 240, 217);
+            ClientSize = new Size(1354, 790);
             Controls.Add(flowLayoutPanelMenu);
+            Controls.Add(Grid_panel);
+            Controls.Add(logo_picture);
+            Controls.Add(Head_panel);
+            Font = new Font("Microsoft JhengHei", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
+            MaximumSize = new Size(1354, 790);
+            MinimumSize = new Size(895, 556);
             Name = "Accounting";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Accounting";
@@ -505,8 +625,11 @@
             panel_Tables.ResumeLayout(false);
             search_panel.ResumeLayout(false);
             search_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DB_Grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)logo_picture).EndInit();
+            Head_panel.ResumeLayout(false);
+            Head_panel.PerformLayout();
             Grid_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DB_Grid).EndInit();
             ResumeLayout(false);
         }
 
@@ -526,18 +649,25 @@
         private Button btn_Computers;
         private System.Windows.Forms.Timer Tables_btn_timer;
         private Button btn_Save;
-        private Button btn_Change;
         private Button btn_Add;
         private Button btn_Remove;
         private Button btn_Menu;
         private Label label_Menu;
         private System.Windows.Forms.Timer Menu_Timer;
-        internal DoubleBufferedDataGridView DB_Grid;
-        private Panel Grid_panel;
         private System.Windows.Forms.Timer Grid_timer;
         private Panel search_panel;
         private TextBox search_textbox;
         private Button search_btn_small;
         private System.Windows.Forms.Timer Search_timer;
+        private PictureBox logo_picture;
+        private System.Windows.Forms.Timer Hide_logo_timer;
+        private Button btn_Home;
+        private ToggleSwitch toggleSwitch_Change;
+        private Button btn_Close;
+        private Panel Head_panel;
+        private Button btn_Minimize;
+        private Label curr_table_label;
+        private Panel Grid_panel;
+        internal DoubleBufferedDataGridView DB_Grid;
     }
 }

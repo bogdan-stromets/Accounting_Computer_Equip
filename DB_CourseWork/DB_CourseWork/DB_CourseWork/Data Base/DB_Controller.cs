@@ -74,32 +74,32 @@ namespace DB_CourseWork
 
         public static void GetResult(object property, string query,string nameTable)
         {
-            object result = null;
+            object? result = null;
             switch (nameTable)
             {
                 case "users":
-                    result = (property as DbSet<User>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<User>)property).FromSqlRaw(query).ToList();
                     break;
                 case "supplies":
-                    result = (property as DbSet<Supply>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<Supply>)property).FromSqlRaw(query).ToList();
                     break;
                 case "peripheral_devices":
-                    result = (property as DbSet<PeripheralDevice>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<PeripheralDevice>)property).FromSqlRaw(query).ToList();
                     break;
                 case "pc_Сomponents":
-                    result = (property as DbSet<PcСomponent>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<PcСomponent>)property).FromSqlRaw(query).ToList();
                     break;
                 case "office_equipment":
-                    result = (property as DbSet<OfficeEquipment>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<OfficeEquipment>)property).FromSqlRaw(query).ToList();
                     break;
                 case "network_devices":
-                    result = (property as DbSet<NetworkDevice>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<NetworkDevice>)property).FromSqlRaw(query).ToList();
                     break;
                 case "computers":
-                    result = (property as DbSet<Computer>).FromSqlRaw(query).ToList();
+                    result = ((DbSet<Computer>)property).FromSqlRaw(query).ToList();
                     break;
             }
-            searchForm.dataGridView1.DataSource = result;
+            mainForm.DB_Grid.DataSource = result;
         }
 
 

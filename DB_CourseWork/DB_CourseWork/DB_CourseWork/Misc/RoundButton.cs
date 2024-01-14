@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DB_CourseWork
+namespace DB_CourseWork.Misc
 {
     public class RoundButton : Button
     {
@@ -13,7 +13,7 @@ namespace DB_CourseWork
         {
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
-            this.Region = new Region(path);
+            Region = new Region(path);
             base.OnPaint(e);
         }
     }

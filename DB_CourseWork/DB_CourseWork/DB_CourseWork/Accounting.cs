@@ -15,6 +15,7 @@ namespace DB_CourseWork
 
     public partial class Accounting : Form
     {
+        #region Variables
         bool is_anim_menu, is_anim_table, is_anim_search;
         bool tables_expand = true;
         int tables_curr_time, menu_curr_time, search_curr_time = 0;
@@ -26,44 +27,13 @@ namespace DB_CourseWork
         private List<object> entities = new List<object>();
         private Type? type;
         private string current_table = "";
-
-
-
-
+        #endregion
         public Accounting()
         {
             InitializeComponent();
             InitForm();
         }
-
-        private void Tables_btn_timer_Tick(object sender, EventArgs e)
-        {
-            tables_curr_time++;
-            if (tables_expand)
-            {
-                Ease ease = new Ease(tables_curr_time, panel_Tables.Height, 10, 100, EaseType.ExpOut);
-                panel_Tables.Height = (int)ease.GetValue;
-
-                if (panel_Tables.Height == panel_Tables.MaximumSize.Height)
-                {
-                    tables_expand = false;
-                    Tables_btn_timer.Stop();
-                    is_anim_table = false;
-                }
-            }
-            else
-            {
-                Ease ease = new Ease(tables_curr_time, panel_Tables.Height, -10, 100, EaseType.ExpOut);
-                panel_Tables.Height = (int)ease.GetValue;
-                if (panel_Tables.Height == panel_Tables.MinimumSize.Height)
-                {
-                    tables_expand = true;
-                    Tables_btn_timer.Stop();
-                    is_anim_table = false;
-                }
-            }
-        }
-
+        #region Button Clicks
         private void btn_Tables_Click(object sender, EventArgs e)
         {
             if (is_anim_table) return;
@@ -73,15 +43,6 @@ namespace DB_CourseWork
                 btn_Menu_Click(sender, e);
             Tables_btn_timer.Start();
             tables_curr_time = 1;
-        }
-        private bool Is_Table_Picked()
-        {
-            if (current_table == String.Empty)
-            {
-                MessageBox.Show("Таблиця не обрана!");
-                return true;
-            }
-            return false;
         }
         private void btn_Search_Click(object sender, EventArgs e)
         {
@@ -94,150 +55,6 @@ namespace DB_CourseWork
             Search_timer.Start();
             search_curr_time = 1;
         }
-
-        private void InitForm()
-        {
-            DB_Controller.mainForm = this;
-
-            DB_Grid.AutoGenerateColumns = true;
-            DB_Grid.ReadOnly = true;
-            DoubleBuffered = true;
-            //table_List.Items.AddRange(DB_Controller.Table.Keys.ToArray());
-            // table_List.SelectedIndex = 0;
-
-            System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
-            tip.SetToolTip(btn_Change, "Changing\r\n(off/on)");
-            tip.SetToolTip(btn_Add, "Add row or rows");
-            tip.SetToolTip(btn_Remove, "Delete row or rows");
-            tip.SetToolTip(btn_Save, "Save changes");
-            tip.SetToolTip(btn_Tables, "Tables");
-            tip.SetToolTip(btn_Menu, "Menu");
-            tip.SetToolTip(btn_Search, "Search");
-        }
-
-        private void DB_Grid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            List<object> listInd = DB_Controller.GetIndexNonStringColumns();
-            if (listInd.Contains(DB_Grid.CurrentCell.ColumnIndex) && e.Control is System.Windows.Forms.TextBox textBox)
-            {
-                textBox.KeyPress += (s, args) =>
-                {
-                    if (!char.IsControl(args.KeyChar) && !char.IsDigit(args.KeyChar))
-                    {
-                        args.Handled = true; // Забороняємо введення символів, які не є цифрами
-                    }
-                };
-            }
-        }
-        private void SetTextStyle()
-        {
-            type = DB_Controller.Table[current_table];
-            DB_Grid.DataSource = entities;
-            foreach (DataGridViewColumn column in DB_Grid.Columns)
-                column.DefaultCellStyle.Font = new Font("Consolas", 11, FontStyle.Regular);
-        }
-        private void CheckSave(object sender, EventArgs e)
-        {
-            if (!saved)
-            {
-                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?", "Збереження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        btn_Save_Click(sender, e);
-                        break;
-                    default:
-                        saved = true;
-                        break;
-                }
-            }
-            // prev_list_ind = table_List.SelectedIndex;
-        }
-        #region Tables data
-        private void btn_Computers_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.Computers.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Персональні комп'ютери";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-
-        private void btn_OfficeEquip_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.OfficeEquipments.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Офісне обладнання";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-
-        private void btn_NetworkDevices_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.NetworkDevices.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Мережеве устаткування";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-
-        private void btn_Supplies_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.Supplies.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Видатковий матеріал";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-
-        private void btn_Components_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.PcСomponents.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Комплектуючі ПК";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-
-        private void btn_Users_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.Users.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Користувачі";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-        private void btn_PeripheralDevices_Click(object sender, EventArgs e)
-        {
-            entities = new List<object>();
-            using (AccountingContext dbContext = new AccountingContext())
-            {
-                dbContext.PeripheralDevices.ToList().ForEach(u => entities.Add(u));
-            };
-            current_table = "Периферійні пристрої";
-            SetTextStyle();
-            CheckSave(sender, e);
-        }
-        #endregion
-
         private void btn_Save_Click(object sender, EventArgs e)
         {
             List<List<object>> table_values = DB_Controller.GetRowValues();
@@ -342,11 +159,6 @@ namespace DB_CourseWork
                 }
             };
         }
-
-        private void Accounting_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CheckSave(sender, e);
-        }
         private void btn_Add_Click(object sender, EventArgs e)
         {
             if (Is_Table_Picked()) return;
@@ -380,10 +192,6 @@ namespace DB_CourseWork
             DB_Grid.DataSource = entities;
             saved = false;
         }
-        private void DB_Grid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            saved = false;
-        }
         private void btn_Change_Click(object sender, EventArgs e)
         {
             if (Is_Table_Picked()) return;
@@ -393,7 +201,6 @@ namespace DB_CourseWork
             DB_Grid.ReadOnly = !permissionChange;
             DB_Grid.Columns[0].ReadOnly = true;
         }
-
         private void btn_Menu_Click(object sender, EventArgs e)
         {
             if (is_anim_menu) return;
@@ -408,7 +215,47 @@ namespace DB_CourseWork
                 Search_timer.Start();
 
         }
+        private void search_btn_small_Click(object sender, EventArgs e)
+        {
+            SearchForm searchForm = new SearchForm();
 
+            searchForm.StartPosition = FormStartPosition.CenterParent;
+            using (var dbContext = new AccountingContext())
+            {
+                searchForm.nameTable = dbContext.Model.FindEntityType(DB_Controller.Table[current_table]).GetTableName();
+                searchForm.table = dbContext.Model.FindEntityType(DB_Controller.Table[current_table]);
+            };
+            searchForm.ShowDialog();
+        }
+        #endregion
+        #region Timers Ticks
+        private void Tables_btn_timer_Tick(object sender, EventArgs e)
+        {
+            tables_curr_time++;
+            if (tables_expand)
+            {
+                Ease ease = new Ease(tables_curr_time, panel_Tables.Height, 10, 100, EaseType.ExpOut);
+                panel_Tables.Height = (int)ease.GetValue;
+
+                if (panel_Tables.Height == panel_Tables.MaximumSize.Height)
+                {
+                    tables_expand = false;
+                    Tables_btn_timer.Stop();
+                    is_anim_table = false;
+                }
+            }
+            else
+            {
+                Ease ease = new Ease(tables_curr_time, panel_Tables.Height, -10, 100, EaseType.ExpOut);
+                panel_Tables.Height = (int)ease.GetValue;
+                if (panel_Tables.Height == panel_Tables.MinimumSize.Height)
+                {
+                    tables_expand = true;
+                    Tables_btn_timer.Stop();
+                    is_anim_table = false;
+                }
+            }
+        }
         private void Menu_Timer_Tick(object sender, EventArgs e)
         {
             menu_curr_time++;
@@ -435,7 +282,6 @@ namespace DB_CourseWork
                 }
             }
         }
-
         private void Grid_timer_Tick(object sender, EventArgs e)
         {
             if (!grid_expand)
@@ -485,12 +331,6 @@ namespace DB_CourseWork
                 }
             }
         }
-
-        private void search_textbox_Click(object sender, EventArgs e)
-        {
-            search_textbox.Clear();
-        }
-
         private void Search_timer_Tick(object sender, EventArgs e)
         {
             search_curr_time++;
@@ -519,17 +359,170 @@ namespace DB_CourseWork
             }
         }
 
-        private void search_btn_small_Click(object sender, EventArgs e)
+        #endregion
+        #region Tables data
+        private void btn_Computers_Click(object sender, EventArgs e)
         {
-            SearchForm searchForm = new SearchForm();
-
-            searchForm.StartPosition = FormStartPosition.CenterParent;
-            using (var dbContext = new AccountingContext())
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
             {
-                searchForm.nameTable = dbContext.Model.FindEntityType(DB_Controller.Table[current_table]).GetTableName();
-                searchForm.table = dbContext.Model.FindEntityType(DB_Controller.Table[current_table]);
+                dbContext.Computers.ToList().ForEach(u => entities.Add(u));
             };
-            searchForm.ShowDialog();
+            current_table = "Персональні комп'ютери";
+            SetTextStyle();
+            CheckSave(sender, e);
         }
+
+        private void btn_OfficeEquip_Click(object sender, EventArgs e)
+        {
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                dbContext.OfficeEquipments.ToList().ForEach(u => entities.Add(u));
+            };
+            current_table = "Офісне обладнання";
+            SetTextStyle();
+            CheckSave(sender, e);
+        }
+
+        private void btn_NetworkDevices_Click(object sender, EventArgs e)
+        {
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                dbContext.NetworkDevices.ToList().ForEach(u => entities.Add(u));
+            };
+            current_table = "Мережеве устаткування";
+            SetTextStyle();
+            CheckSave(sender, e);
+        }
+
+        private void btn_Supplies_Click(object sender, EventArgs e)
+        {
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                dbContext.Supplies.ToList().ForEach(u => entities.Add(u));
+            };
+            current_table = "Видатковий матеріал";
+            SetTextStyle();
+            CheckSave(sender, e);
+        }
+
+        private void btn_Components_Click(object sender, EventArgs e)
+        {
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                dbContext.PcСomponents.ToList().ForEach(u => entities.Add(u));
+            };
+            current_table = "Комплектуючі ПК";
+            SetTextStyle();
+            CheckSave(sender, e);
+        }
+
+        private void btn_Users_Click(object sender, EventArgs e)
+        {
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                dbContext.Users.ToList().ForEach(u => entities.Add(u));
+            };
+            current_table = "Користувачі";
+            SetTextStyle();
+            CheckSave(sender, e);
+        }
+        private void btn_PeripheralDevices_Click(object sender, EventArgs e)
+        {
+            entities = new List<object>();
+            using (AccountingContext dbContext = new AccountingContext())
+            {
+                dbContext.PeripheralDevices.ToList().ForEach(u => entities.Add(u));
+            };
+            current_table = "Периферійні пристрої";
+            SetTextStyle();
+            CheckSave(sender, e);
+        }
+        #endregion
+        #region Misc Events
+        private void DB_Grid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            List<object> listInd = DB_Controller.GetIndexNonStringColumns();
+            if (listInd.Contains(DB_Grid.CurrentCell.ColumnIndex) && e.Control is System.Windows.Forms.TextBox textBox)
+            {
+                textBox.KeyPress += (s, args) =>
+                {
+                    if (!char.IsControl(args.KeyChar) && !char.IsDigit(args.KeyChar))
+                    {
+                        args.Handled = true; // Забороняємо введення символів, які не є цифрами
+                    }
+                };
+            }
+        }
+        private void Accounting_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CheckSave(sender, e);
+        }
+        private void DB_Grid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            saved = false;
+        }
+        private void Accounting_Load(object sender, EventArgs e)
+        {
+            search_textbox.AddPlaceholder("Search");
+        }
+
+        #endregion
+        #region Misc Methods
+        private bool Is_Table_Picked()
+        {
+            if (current_table == String.Empty)
+            {
+                MessageBox.Show("Таблиця не обрана!");
+                return true;
+            }
+            return false;
+        }
+        private void InitForm()
+        {
+            DB_Controller.mainForm = this;
+
+            DB_Grid.AutoGenerateColumns = true;
+            DB_Grid.ReadOnly = true;
+            DoubleBuffered = true;
+
+            System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
+            tip.SetToolTip(btn_Change, "Changing\r\n(off/on)");
+            tip.SetToolTip(btn_Add, "Add row or rows");
+            tip.SetToolTip(btn_Remove, "Delete row or rows");
+            tip.SetToolTip(btn_Save, "Save changes");
+            tip.SetToolTip(btn_Tables, "Tables");
+            tip.SetToolTip(btn_Menu, "Menu");
+            tip.SetToolTip(btn_Search, "Search");
+        }
+        private void SetTextStyle()
+        {
+            type = DB_Controller.Table[current_table];
+            DB_Grid.DataSource = entities;
+            foreach (DataGridViewColumn column in DB_Grid.Columns)
+                column.DefaultCellStyle.Font = new Font("Consolas", 11, FontStyle.Regular);
+        }
+        private void CheckSave(object sender, EventArgs e)
+        {
+            if (!saved)
+            {
+                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?", "Збереження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        btn_Save_Click(sender, e);
+                        break;
+                    default:
+                        saved = true;
+                        break;
+                }
+            }
+        }
+        #endregion
     }
 }

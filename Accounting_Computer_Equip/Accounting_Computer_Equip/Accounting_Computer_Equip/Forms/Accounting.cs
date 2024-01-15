@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Accounting_Computer_Equip
 {
@@ -18,9 +19,10 @@ namespace Accounting_Computer_Equip
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         #endregion
         #region Variables
-        private bool is_anim_menu, is_anim_table, is_anim_search, is_anim_logo, permissionChange, tables_expand = true,
+        private bool is_anim_menu, is_anim_table, is_anim_addict_panel, is_anim_search, is_anim_logo, permissionChange, tables_expand = true, addict_panel_expand = true,
             menu_expand = true, grid_expand = true, search_expand = true, logo_expand = true, saved = true;
-        private int tables_curr_time, menu_curr_time, search_curr_time, logo_curr_time;
+        private int tables_curr_time, menu_curr_time, search_curr_time, logo_curr_time, addict_panel_curr_time;
+        float arrow_angle = 0f;
         private List<object> entities = new List<object>();
         private Type? type;
         private string current_table = "";
@@ -34,7 +36,8 @@ namespace Accounting_Computer_Equip
         private void btn_Home_Click(object sender, EventArgs e)
         {
             if (is_anim_logo || logo_expand) return;
-
+            if (search_panel.Height == search_panel.MaximumSize.Height)
+                Search_timer.Start();
             Hide_logo_timer.Start();
             is_anim_logo = true;
             current_table = String.Empty;
@@ -610,7 +613,10 @@ namespace Accounting_Computer_Equip
             DB_Grid.ReadOnly = true;
             //Grid_panel.Location = new Point(1360, 76);
             DoubleBuffered = true;
-
+            CreateTip();
+        }
+        private void CreateTip()
+        {
             System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
             tip.SetToolTip(toggleSwitch_Change, "Changing\r\n(off/on)");
             tip.SetToolTip(btn_Add, "Add row or rows");
@@ -619,6 +625,9 @@ namespace Accounting_Computer_Equip
             tip.SetToolTip(btn_Tables, "Tables");
             tip.SetToolTip(btn_Menu, "Menu");
             tip.SetToolTip(btn_Search, "Search");
+            tip.SetToolTip(btn_Minimize, "Minimize");
+            tip.SetToolTip(btn_Close, "Close");
+            tip.SetToolTip(btn_Home, "Start Screen");
         }
         private void SetTextStyle()
         {
@@ -676,5 +685,46 @@ namespace Accounting_Computer_Equip
         #endregion
 
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            //arrow_btn.Image = RotateImage(arrow_btn.Image, new PointF(arrow_btn.Width / 2, arrow_btn.Height / 2), 180);
+            addict_panel_curr_time = 0;
+
+            is_anim_addict_panel = true;
+            addict_panel_timer.Start();
+        }
+
+        private void addict_panel_timer_Tick(object sender, EventArgs e)
+        {
+            Debug.WriteLine(arrow_angle);
+            addict_panel_curr_time++;
+            float prev_angle = arrow_angle;
+
+            if (addict_panel_expand)
+            {
+                if (arrow_angle < 180f)
+                {
+                    Ease button = new Ease(addict_panel_curr_time, arrow_angle, 5, 100, EaseType.CirculOut);
+                    arrow_angle = (float)button.GetValue > 180f ? 180f : (float)button.GetValue;
+                    // arrow_btn.Image;
+                   //arrow_btn.Image.
+                    arrow_btn.RotateImage(new PointF(arrow_btn.Width / 2, arrow_btn.Height / 2), Math.Abs(arrow_angle - prev_angle));
+                    Invalidate();
+                    arrow_btn.Invalidate();
+
+                }
+                else { addict_panel_timer.Stop(); }//temp
+                //84; 715
+                Ease panel = new Ease(addict_panel_curr_time, bottom_panel.Height, 10, 200, EaseType.ExpOut);
+                bottom_panel.Height = (int)panel.GetValue;
+                if (bottom_panel.Height == bottom_panel.MinimumSize.Height)
+                {
+                    addict_panel_expand = false;
+                    is_anim_addict_panel = false;
+                    addict_panel_timer.Stop();
+                }
+
+            }
+        }
     }
 }

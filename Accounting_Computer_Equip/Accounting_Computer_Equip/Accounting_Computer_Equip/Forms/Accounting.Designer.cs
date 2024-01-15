@@ -32,11 +32,11 @@ namespace Accounting_Computer_Equip
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accounting));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             flowLayoutPanelMenu = new FlowLayoutPanel();
             panelLogo = new Panel();
             label_Menu = new Label();
@@ -73,6 +73,8 @@ namespace Accounting_Computer_Equip
             DB_Grid = new DoubleBufferedDataGridView();
             bottom_panel = new Panel();
             addict_btn_panel = new FlowLayoutPanel();
+            arrow_btn = new PictureBox();
+            addict_panel_timer = new System.Windows.Forms.Timer(components);
             flowLayoutPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panel_Tables.SuspendLayout();
@@ -83,6 +85,7 @@ namespace Accounting_Computer_Equip
             ((System.ComponentModel.ISupportInitialize)DB_Grid).BeginInit();
             bottom_panel.SuspendLayout();
             addict_btn_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)arrow_btn).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanelMenu
@@ -564,44 +567,44 @@ namespace Accounting_Computer_Equip
             // 
             // DB_Grid
             // 
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(232, 247, 234);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(81, 182, 135);
-            DB_Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            DB_Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             DB_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DB_Grid.BackgroundColor = Color.FromArgb(232, 247, 234);
             DB_Grid.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             DB_Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(232, 247, 234);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(81, 182, 135);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DB_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            DB_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             DB_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(232, 247, 234);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(81, 182, 135);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DB_Grid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DB_Grid.DefaultCellStyle = dataGridViewCellStyle8;
             DB_Grid.Dock = DockStyle.Fill;
             DB_Grid.EnableHeadersVisualStyles = false;
             DB_Grid.GridColor = Color.Black;
             DB_Grid.Location = new Point(0, 0);
             DB_Grid.Name = "DB_Grid";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(232, 247, 234);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(81, 182, 135);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            DB_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(181, 224, 196);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(81, 182, 135);
-            DB_Grid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(232, 247, 234);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            DB_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(181, 224, 196);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(81, 182, 135);
+            DB_Grid.RowsDefaultCellStyle = dataGridViewCellStyle10;
             DB_Grid.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(181, 224, 196);
             DB_Grid.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(81, 182, 135);
             DB_Grid.RowTemplate.Height = 25;
@@ -612,11 +615,15 @@ namespace Accounting_Computer_Equip
             // 
             // bottom_panel
             // 
+            bottom_panel.Anchor = AnchorStyles.Bottom;
             bottom_panel.BackColor = Color.FromArgb(146, 209, 174);
             bottom_panel.Controls.Add(addict_btn_panel);
-            bottom_panel.Location = new Point(84, 704);
+            bottom_panel.Location = new Point(84, 715);
+            bottom_panel.Margin = new Padding(0);
+            bottom_panel.MaximumSize = new Size(1270, 75);
+            bottom_panel.MinimumSize = new Size(1270, 0);
             bottom_panel.Name = "bottom_panel";
-            bottom_panel.Size = new Size(1270, 86);
+            bottom_panel.Size = new Size(1270, 75);
             bottom_panel.TabIndex = 11;
             // 
             // addict_btn_panel
@@ -624,10 +631,25 @@ namespace Accounting_Computer_Equip
             addict_btn_panel.Controls.Add(btn_Add);
             addict_btn_panel.Controls.Add(btn_Remove);
             addict_btn_panel.Controls.Add(btn_Save);
-            addict_btn_panel.Location = new Point(516, 3);
+            addict_btn_panel.Location = new Point(518, 0);
             addict_btn_panel.Name = "addict_btn_panel";
-            addict_btn_panel.Size = new Size(254, 77);
+            addict_btn_panel.Size = new Size(254, 86);
             addict_btn_panel.TabIndex = 0;
+            // 
+            // arrow_btn
+            // 
+            arrow_btn.Image = Properties.Resources.home;
+            arrow_btn.Location = new Point(102, 411);
+            arrow_btn.Name = "arrow_btn";
+            arrow_btn.Size = new Size(62, 72);
+            arrow_btn.TabIndex = 12;
+            arrow_btn.TabStop = false;
+            arrow_btn.Click += pictureBox1_Click;
+            // 
+            // addict_panel_timer
+            // 
+            addict_panel_timer.Interval = 1;
+            addict_panel_timer.Tick += addict_panel_timer_Tick;
             // 
             // Accounting
             // 
@@ -640,6 +662,7 @@ namespace Accounting_Computer_Equip
             Controls.Add(Head_panel);
             Controls.Add(bottom_panel);
             Controls.Add(Grid_panel);
+            Controls.Add(arrow_btn);
             Font = new Font("Microsoft JhengHei", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
@@ -663,6 +686,7 @@ namespace Accounting_Computer_Equip
             ((System.ComponentModel.ISupportInitialize)DB_Grid).EndInit();
             bottom_panel.ResumeLayout(false);
             addict_btn_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)arrow_btn).EndInit();
             ResumeLayout(false);
         }
 
@@ -704,5 +728,7 @@ namespace Accounting_Computer_Equip
         internal DoubleBufferedDataGridView DB_Grid;
         private Panel bottom_panel;
         private FlowLayoutPanel addict_btn_panel;
+        private PictureBox arrow_btn;
+        private System.Windows.Forms.Timer addict_panel_timer;
     }
 }

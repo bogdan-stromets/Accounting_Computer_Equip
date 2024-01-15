@@ -101,7 +101,5 @@ namespace Accounting_Computer_Equip
             }
             mainForm.DB_Grid.DataSource = result;
         }
-
-
     }
 }

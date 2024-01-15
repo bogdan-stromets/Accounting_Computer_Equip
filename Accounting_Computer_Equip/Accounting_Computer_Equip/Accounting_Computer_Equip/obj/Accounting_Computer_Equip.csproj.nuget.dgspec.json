@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip.csproj": {}
+  },
+  "projects": {
+    "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip.csproj",
+        "projectName": "Accounting_Computer_Equip",
+        "projectPath": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip.csproj",
+        "packagesPath": "C:\\Users\\String.Empty\\.nuget\\packages\\",
+        "outputPath": "F:\\Study\\4 курс\\1 семестр\\Проектування ІС\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\Accounting_Computer_Equip\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\String.Empty\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

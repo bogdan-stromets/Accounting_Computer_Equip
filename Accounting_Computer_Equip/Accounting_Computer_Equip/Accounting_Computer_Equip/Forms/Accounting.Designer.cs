@@ -69,23 +69,23 @@ namespace Accounting_Computer_Equip
             Head_panel = new Panel();
             curr_table_label = new Label();
             btn_Minimize = new Button();
+            addict_btn_panel = new FlowLayoutPanel();
             Grid_panel = new Panel();
             DB_Grid = new DoubleBufferedDataGridView();
             bottom_panel = new Panel();
-            addict_btn_panel = new FlowLayoutPanel();
-            arrow_btn = new PictureBox();
+            trigger_show_panel = new Panel();
             addict_panel_timer = new System.Windows.Forms.Timer(components);
+            close_addict_panel_timer = new System.Windows.Forms.Timer(components);
             flowLayoutPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panel_Tables.SuspendLayout();
             search_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_picture).BeginInit();
             Head_panel.SuspendLayout();
+            addict_btn_panel.SuspendLayout();
             Grid_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DB_Grid).BeginInit();
             bottom_panel.SuspendLayout();
-            addict_btn_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)arrow_btn).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanelMenu
@@ -101,7 +101,7 @@ namespace Accounting_Computer_Equip
             flowLayoutPanelMenu.MaximumSize = new Size(199, 790);
             flowLayoutPanelMenu.MinimumSize = new Size(84, 749);
             flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
-            flowLayoutPanelMenu.Size = new Size(84, 790);
+            flowLayoutPanelMenu.Size = new Size(199, 790);
             flowLayoutPanelMenu.TabIndex = 0;
             // 
             // panelLogo
@@ -417,8 +417,8 @@ namespace Accounting_Computer_Equip
             btn_Save.ForeColor = Color.White;
             btn_Save.Image = Properties.Resources.save;
             btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Save.Location = new Point(159, 3);
-            btn_Save.Margin = new Padding(0, 3, 3, 3);
+            btn_Save.Location = new Point(156, 0);
+            btn_Save.Margin = new Padding(0);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(74, 72);
             btn_Save.TabIndex = 7;
@@ -426,6 +426,8 @@ namespace Accounting_Computer_Equip
             btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Save.UseVisualStyleBackColor = true;
             btn_Save.Click += btn_Save_Click;
+            btn_Save.MouseEnter += bottom_panel_MouseEnter;
+            btn_Save.MouseLeave += bottom_panel_MouseLeave;
             // 
             // btn_Add
             // 
@@ -433,17 +435,19 @@ namespace Accounting_Computer_Equip
             btn_Add.FlatStyle = FlatStyle.Flat;
             btn_Add.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Add.ForeColor = Color.White;
-            btn_Add.Image = Properties.Resources.search;
+            btn_Add.Image = Properties.Resources.plus;
             btn_Add.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Add.Location = new Point(0, 3);
-            btn_Add.Margin = new Padding(0, 3, 3, 3);
+            btn_Add.Location = new Point(0, 0);
+            btn_Add.Margin = new Padding(0);
             btn_Add.Name = "btn_Add";
-            btn_Add.Size = new Size(75, 69);
+            btn_Add.Size = new Size(78, 72);
             btn_Add.TabIndex = 9;
             btn_Add.TextAlign = ContentAlignment.MiddleLeft;
             btn_Add.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Add.UseVisualStyleBackColor = true;
             btn_Add.Click += btn_Add_Click;
+            btn_Add.MouseEnter += bottom_panel_MouseEnter;
+            btn_Add.MouseLeave += bottom_panel_MouseLeave;
             // 
             // btn_Remove
             // 
@@ -451,10 +455,10 @@ namespace Accounting_Computer_Equip
             btn_Remove.FlatStyle = FlatStyle.Flat;
             btn_Remove.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Remove.ForeColor = Color.White;
-            btn_Remove.Image = Properties.Resources.search;
+            btn_Remove.Image = Properties.Resources.minus;
             btn_Remove.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Remove.Location = new Point(78, 3);
-            btn_Remove.Margin = new Padding(0, 3, 3, 3);
+            btn_Remove.Location = new Point(78, 0);
+            btn_Remove.Margin = new Padding(0);
             btn_Remove.Name = "btn_Remove";
             btn_Remove.Size = new Size(78, 72);
             btn_Remove.TabIndex = 10;
@@ -462,6 +466,8 @@ namespace Accounting_Computer_Equip
             btn_Remove.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Remove.UseVisualStyleBackColor = true;
             btn_Remove.Click += btn_Remove_Click;
+            btn_Remove.MouseEnter += bottom_panel_MouseEnter;
+            btn_Remove.MouseLeave += bottom_panel_MouseLeave;
             // 
             // Tables_btn_timer
             // 
@@ -554,6 +560,20 @@ namespace Accounting_Computer_Equip
             btn_Minimize.UseVisualStyleBackColor = true;
             btn_Minimize.Click += btn_Minimize_Click;
             // 
+            // addict_btn_panel
+            // 
+            addict_btn_panel.AutoSize = true;
+            addict_btn_panel.Controls.Add(btn_Add);
+            addict_btn_panel.Controls.Add(btn_Remove);
+            addict_btn_panel.Controls.Add(btn_Save);
+            addict_btn_panel.Location = new Point(1037, 0);
+            addict_btn_panel.Margin = new Padding(0);
+            addict_btn_panel.Name = "addict_btn_panel";
+            addict_btn_panel.Size = new Size(282, 91);
+            addict_btn_panel.TabIndex = 0;
+            addict_btn_panel.MouseEnter += bottom_panel_MouseEnter;
+            addict_btn_panel.MouseLeave += bottom_panel_MouseLeave;
+            // 
             // Grid_panel
             // 
             Grid_panel.Anchor = AnchorStyles.Right;
@@ -615,41 +635,37 @@ namespace Accounting_Computer_Equip
             // 
             // bottom_panel
             // 
-            bottom_panel.Anchor = AnchorStyles.Bottom;
             bottom_panel.BackColor = Color.FromArgb(146, 209, 174);
             bottom_panel.Controls.Add(addict_btn_panel);
-            bottom_panel.Location = new Point(84, 715);
+            bottom_panel.Location = new Point(84, 790);
             bottom_panel.Margin = new Padding(0);
-            bottom_panel.MaximumSize = new Size(1270, 75);
+            bottom_panel.MaximumSize = new Size(1270, 72);
             bottom_panel.MinimumSize = new Size(1270, 0);
             bottom_panel.Name = "bottom_panel";
-            bottom_panel.Size = new Size(1270, 75);
+            bottom_panel.Size = new Size(1270, 72);
             bottom_panel.TabIndex = 11;
+            bottom_panel.MouseEnter += bottom_panel_MouseEnter;
+            bottom_panel.MouseLeave += bottom_panel_MouseLeave;
             // 
-            // addict_btn_panel
+            // trigger_show_panel
             // 
-            addict_btn_panel.Controls.Add(btn_Add);
-            addict_btn_panel.Controls.Add(btn_Remove);
-            addict_btn_panel.Controls.Add(btn_Save);
-            addict_btn_panel.Location = new Point(518, 0);
-            addict_btn_panel.Name = "addict_btn_panel";
-            addict_btn_panel.Size = new Size(254, 86);
-            addict_btn_panel.TabIndex = 0;
-            // 
-            // arrow_btn
-            // 
-            arrow_btn.Image = Properties.Resources.home;
-            arrow_btn.Location = new Point(102, 411);
-            arrow_btn.Name = "arrow_btn";
-            arrow_btn.Size = new Size(62, 72);
-            arrow_btn.TabIndex = 12;
-            arrow_btn.TabStop = false;
-            arrow_btn.Click += pictureBox1_Click;
+            trigger_show_panel.BackColor = Color.Transparent;
+            trigger_show_panel.BackgroundImage = Properties.Resources.arrow;
+            trigger_show_panel.BackgroundImageLayout = ImageLayout.Zoom;
+            trigger_show_panel.Location = new Point(84, 766);
+            trigger_show_panel.Name = "trigger_show_panel";
+            trigger_show_panel.Size = new Size(1270, 24);
+            trigger_show_panel.TabIndex = 12;
+            trigger_show_panel.MouseHover += trigger_show_panel_MouseHover;
             // 
             // addict_panel_timer
             // 
             addict_panel_timer.Interval = 1;
             addict_panel_timer.Tick += addict_panel_timer_Tick;
+            // 
+            // close_addict_panel_timer
+            // 
+            close_addict_panel_timer.Tick += close_addict_panel_timer_Tick;
             // 
             // Accounting
             // 
@@ -662,7 +678,7 @@ namespace Accounting_Computer_Equip
             Controls.Add(Head_panel);
             Controls.Add(bottom_panel);
             Controls.Add(Grid_panel);
-            Controls.Add(arrow_btn);
+            Controls.Add(trigger_show_panel);
             Font = new Font("Microsoft JhengHei", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
@@ -682,11 +698,11 @@ namespace Accounting_Computer_Equip
             ((System.ComponentModel.ISupportInitialize)logo_picture).EndInit();
             Head_panel.ResumeLayout(false);
             Head_panel.PerformLayout();
+            addict_btn_panel.ResumeLayout(false);
             Grid_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DB_Grid).EndInit();
             bottom_panel.ResumeLayout(false);
-            addict_btn_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)arrow_btn).EndInit();
+            bottom_panel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -728,7 +744,8 @@ namespace Accounting_Computer_Equip
         internal DoubleBufferedDataGridView DB_Grid;
         private Panel bottom_panel;
         private FlowLayoutPanel addict_btn_panel;
-        private PictureBox arrow_btn;
         private System.Windows.Forms.Timer addict_panel_timer;
+        private Panel trigger_show_panel;
+        private System.Windows.Forms.Timer close_addict_panel_timer;
     }
 }

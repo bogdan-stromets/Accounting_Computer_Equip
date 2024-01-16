@@ -166,3 +166,4 @@ F:\Study\4 курс\1 семестр\Проектування ІС\Accounting_Co
 F:\Study\4 курс\1 семестр\Проектування ІС\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\obj\Debug\net6.0-windows\Accounting_Computer_Equip.pdb
 F:\Study\4 курс\1 семестр\Проектування ІС\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\obj\Debug\net6.0-windows\Accounting_Computer_Equip.genruntimeconfig.cache
 F:\Study\4 курс\1 семестр\Проектування ІС\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\obj\Debug\net6.0-windows\ref\Accounting_Computer_Equip.dll
+F:\Study\4 курс\1 семестр\Проектування ІС\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\Accounting_Computer_Equip\obj\Debug\net6.0-windows\Accounting_Computer_Equip.Forms.AddictFunc.resources

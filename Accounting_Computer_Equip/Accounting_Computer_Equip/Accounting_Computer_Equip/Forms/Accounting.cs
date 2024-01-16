@@ -1,5 +1,7 @@
-﻿using Accounting_Computer_Equip.Misc;
+﻿using Accounting_Computer_Equip.Forms;
+using Accounting_Computer_Equip.Misc;
 using Accounting_Computer_Equip.Models;
+using Accounting_Computer_Equip.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Data;
@@ -21,11 +23,11 @@ namespace Accounting_Computer_Equip
         #region Variables
         private bool is_anim_menu, is_anim_table, is_anim_addict_panel, is_anim_search, is_anim_logo, permissionChange, tables_expand = true, addict_panel_expand = true,
             menu_expand = true, grid_expand = true, search_expand = true, logo_expand = true, saved = true;
-        private int tables_curr_time, menu_curr_time, search_curr_time, logo_curr_time, addict_panel_curr_time;
-        float arrow_angle = 0f;
+        private int tables_curr_time, menu_curr_time, search_curr_time, logo_curr_time, addict_panel_curr_time, close_addict_panel_time;
         private List<object> entities = new List<object>();
         private Type? type;
         private string current_table = "";
+        private List<System.Windows.Forms.Button> buttons = new List<System.Windows.Forms.Button>();
         #endregion
         public Accounting()
         {
@@ -352,6 +354,7 @@ namespace Accounting_Computer_Equip
         {
             if (!grid_expand)
             {
+
                 bool width_done = false, location_done = false;
                 if (Grid_panel.Width < Grid_panel.MaximumSize.Width)
                 {
@@ -482,7 +485,62 @@ namespace Accounting_Computer_Equip
             Grid_panel.Invalidate();
             logo_picture.Invalidate();
         }
+        private void addict_panel_timer_Tick(object sender, EventArgs e)
+        {
+            bottom_panel.Controls.Add(addict_btn_panel);
+            addict_panel_curr_time++;
 
+            if (!addict_panel_expand)
+            {
+                //84; 715
+                if (trigger_show_panel.Location.Y > 766)
+                {
+                    Ease trigger = new Ease(addict_panel_curr_time, trigger_show_panel.Location.Y, -10, 100, EaseType.ExpOut);
+                    trigger_show_panel.Location = new Point(trigger_show_panel.Location.X, (int)trigger.GetValue);
+                }
+                Ease panel = new Ease(addict_panel_curr_time, bottom_panel.Location.Y, 10, 100, EaseType.ExpOut);
+                bottom_panel.Location = new Point(bottom_panel.Location.X, (int)panel.GetValue);
+                if (bottom_panel.Location.Y >= 790)
+                {
+                    bottom_panel.Location = bottom_panel.Location.Y > 790 ? new Point(bottom_panel.Location.X, 790) : bottom_panel.Location;
+                    addict_panel_expand = true;
+                    is_anim_addict_panel = false;
+                    addict_panel_timer.Stop();
+                    addict_panel_curr_time = 0;
+                }
+
+            }
+            else
+            {
+                if (trigger_show_panel.Location.Y < 790)
+                {
+                    Ease trigger = new Ease(addict_panel_curr_time, trigger_show_panel.Location.Y, 60, 100, EaseType.ExpOut);
+                    trigger_show_panel.Location = new Point(trigger_show_panel.Location.X, (int)trigger.GetValue);
+                }
+                Ease panel = new Ease(addict_panel_curr_time, bottom_panel.Location.Y, -10, 100, EaseType.ExpOut);
+                bottom_panel.Location = new Point(bottom_panel.Location.X, (int)panel.GetValue);
+                if (bottom_panel.Location.Y <= 718)
+                {
+                    bottom_panel.Location = bottom_panel.Location.Y < 710 ? new Point(bottom_panel.Location.X, 710) : bottom_panel.Location;
+                    addict_panel_expand = false;
+                    is_anim_addict_panel = false;
+                    addict_panel_timer.Stop();
+                    addict_panel_curr_time = 0;
+                }
+            }
+        }
+        private void close_addict_panel_timer_Tick(object sender, EventArgs e)
+        {
+            if (is_anim_addict_panel) return;
+            close_addict_panel_time++;
+            if (close_addict_panel_time == 5)
+            {
+                addict_panel_timer.Start();
+                addict_panel_curr_time = 0;
+                close_addict_panel_timer.Stop();
+                close_addict_panel_time = 0;
+            }
+        }
         #endregion
         #region Tables data
         private void btn_Computers_Click(object sender, EventArgs e)
@@ -594,7 +652,26 @@ namespace Accounting_Computer_Equip
         {
             search_textbox.AddPlaceholder("Search", Color.Gray, Color.Gainsboro);
         }
-
+        private void trigger_show_panel_MouseHover(object sender, EventArgs e)
+        {
+            if (is_anim_addict_panel || current_table == String.Empty) return;
+            addict_panel_timer.Start();
+            is_anim_addict_panel = true;
+        }
+        private void bottom_panel_MouseLeave(object sender, EventArgs e)
+        {
+            if (is_anim_addict_panel) return;
+            close_addict_panel_time = 0;
+            if (!close_addict_panel_timer.Enabled)
+                close_addict_panel_timer.Start();
+        }
+        private void bottom_panel_MouseEnter(object sender, EventArgs e)
+        {
+            if (is_anim_addict_panel) return;
+            if (close_addict_panel_timer.Enabled)
+                close_addict_panel_timer.Stop();
+            close_addict_panel_time = 0;
+        }
         #endregion
         #region Misc Methods
         private bool Is_Table_Picked()
@@ -638,7 +715,7 @@ namespace Accounting_Computer_Equip
 
             if (Grid_panel.Location.X > 205)
                 Hide_logo_timer.Start();
-
+            ConfigAddictPanel();
             HeaderTextChange();
         }
         private void CheckSave(object sender, EventArgs e)
@@ -673,58 +750,81 @@ namespace Accounting_Computer_Equip
             curr_table_label.Text = text;
             ReLocateElement(Head_panel, curr_table_label);
         }
-        private void ReLocateElement(Control parent, Control child)
+        private static void ReLocateElement(Control parent, Control child)
         {
             Point child_curr_pos = child.Location;
             child.Location = new Point(parent.Width / 2 - child.Width / 2, child_curr_pos.Y);
         }
         private void ConfigAddictPanel()
         {
+            buttons.ForEach(button => { addict_btn_panel.Controls.Remove(button); });
+            buttons.Clear();
+            switch (current_table)
+            {
+                case "Користувачі":
+                    buttons.Add(CreateAddictBtn("btn_percent_user", Resources.percent));
+                    addict_btn_panel.Controls.AddRange(buttons.ToArray());
+                    break;
+                case "Периферійні пристрої":
+                    buttons.Add(CreateAddictBtn("btn_percent_pereph", Resources.DB));
+                    addict_btn_panel.Controls.AddRange(buttons.ToArray());
+                    break;
+                case "Комплектуючі ПК":
+                    buttons.Add(CreateAddictBtn("btn_percent_components", Resources.DB));
+                    addict_btn_panel.Controls.AddRange(buttons.ToArray());
+                    break;
+                case "Офісне обладнання":
+                    buttons.Add(CreateAddictBtn("btn_percent_office", Resources.DB));
+                    addict_btn_panel.Controls.AddRange(buttons.ToArray());
+                    break;
+                case "Мережеве устаткування":
+                    buttons.Add(CreateAddictBtn("btn_percent_network", Resources.DB));
+                    addict_btn_panel.Controls.AddRange(buttons.ToArray());
+                    break;
+                case "Персональні комп'ютери":
+                    buttons.Add(CreateAddictBtn("btn_percent_PC", Resources.DB));
+                    addict_btn_panel.Controls.AddRange(buttons.ToArray());
+                    break;
+                default: return;
+            }
 
+
+            System.Windows.Forms.ToolTip tip = new System.Windows.Forms.ToolTip();
+            tip.SetToolTip(buttons[0], "Additional Info");
+            buttons[0].MouseEnter += bottom_panel_MouseEnter;
+            buttons[0].MouseLeave += bottom_panel_MouseLeave;
+            buttons[0].Click += (s, e) =>
+            {
+                AddictFunc addictFunc = new AddictFunc();
+                addictFunc.Table_name = current_table;
+                addict_panel_timer.Start();
+                addictFunc.Entities = entities;
+                addictFunc.ShowDialog();
+            };
+
+            ReLocateElement(bottom_panel, addict_btn_panel);
+        }
+        private System.Windows.Forms.Button CreateAddictBtn(string name, Bitmap image)
+        {
+            System.Windows.Forms.Button b = new System.Windows.Forms.Button()
+            {
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point),
+                ForeColor = Color.White,
+                Image = image,
+                ImageAlign = ContentAlignment.MiddleCenter,
+                Location = new Point(0, 81),
+                Margin = new Padding(0),
+                Name = name,
+                Size = new Size(74, 72),
+                TabIndex = 7,
+                TextAlign = ContentAlignment.MiddleLeft,
+                TextImageRelation = TextImageRelation.ImageBeforeText,
+                UseVisualStyleBackColor = true
+            };
+            b.FlatAppearance.BorderSize = 0;
+            return b;
         }
         #endregion
-
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            //arrow_btn.Image = RotateImage(arrow_btn.Image, new PointF(arrow_btn.Width / 2, arrow_btn.Height / 2), 180);
-            addict_panel_curr_time = 0;
-
-            is_anim_addict_panel = true;
-            addict_panel_timer.Start();
-        }
-
-        private void addict_panel_timer_Tick(object sender, EventArgs e)
-        {
-            Debug.WriteLine(arrow_angle);
-            addict_panel_curr_time++;
-            float prev_angle = arrow_angle;
-
-            if (addict_panel_expand)
-            {
-                if (arrow_angle < 180f)
-                {
-                    Ease button = new Ease(addict_panel_curr_time, arrow_angle, 5, 100, EaseType.CirculOut);
-                    arrow_angle = (float)button.GetValue > 180f ? 180f : (float)button.GetValue;
-                    // arrow_btn.Image;
-                   //arrow_btn.Image.
-                    arrow_btn.RotateImage(new PointF(arrow_btn.Width / 2, arrow_btn.Height / 2), Math.Abs(arrow_angle - prev_angle));
-                    Invalidate();
-                    arrow_btn.Invalidate();
-
-                }
-                else { addict_panel_timer.Stop(); }//temp
-                //84; 715
-                Ease panel = new Ease(addict_panel_curr_time, bottom_panel.Height, 10, 200, EaseType.ExpOut);
-                bottom_panel.Height = (int)panel.GetValue;
-                if (bottom_panel.Height == bottom_panel.MinimumSize.Height)
-                {
-                    addict_panel_expand = false;
-                    is_anim_addict_panel = false;
-                    addict_panel_timer.Stop();
-                }
-
-            }
-        }
     }
 }

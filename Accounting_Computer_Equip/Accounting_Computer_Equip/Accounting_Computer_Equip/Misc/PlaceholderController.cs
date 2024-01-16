@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Accounting_Computer_Equip.Misc
 {
@@ -32,25 +33,6 @@ namespace Accounting_Computer_Equip.Misc
                     tb.Text = placeholder_txt;
                 }
             };
-        }
-
-        public static void RotateImage(this PictureBox pb, PointF offset, float angle)
-        {
-            Image image = pb.Image;
-            pb.Image = null;
-            if (image == null)
-                throw new ArgumentNullException("image");
-
-            Bitmap rotatedBmp = new Bitmap(image.Width, image.Height);
-            rotatedBmp.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-            Graphics g = Graphics.FromImage(rotatedBmp);
-            g.Clear(Color.Transparent);
-            g.TranslateTransform(offset.X, offset.Y);
-            g.RotateTransform(angle);
-            g.TranslateTransform(-offset.X, -offset.Y);
-            g.DrawImage(image, new PointF(0, 0));
-            
-            pb.Image = rotatedBmp;
         }
     }
 }

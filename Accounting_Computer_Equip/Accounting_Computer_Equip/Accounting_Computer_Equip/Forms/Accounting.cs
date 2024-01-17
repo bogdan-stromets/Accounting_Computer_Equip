@@ -166,7 +166,7 @@ namespace Accounting_Computer_Equip
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Не всі дані було введено!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Not all data was entered!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     saved = true;
                 }
             };
@@ -678,7 +678,7 @@ namespace Accounting_Computer_Equip
         {
             if (current_table == String.Empty)
             {
-                MessageBox.Show("Таблиця не обрана!");
+                MessageBox.Show("Table not selected!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return true;
             }
             return false;
@@ -722,7 +722,7 @@ namespace Accounting_Computer_Equip
         {
             if (!saved)
             {
-                DialogResult result = MessageBox.Show("Ви забули зберегти зміни! Зберегти?", "Збереження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("You forgot to save your changes! Save?", "Saving", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 switch (result)
                 {
                     case DialogResult.Yes:
